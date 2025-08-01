@@ -102,8 +102,6 @@
   border: none;
   color: var(--text-primary);
   cursor: pointer;
-  width: 40px;
-  height: 40px;
   border-radius: var(--border-radius-full);
   display: flex;
   align-items: center;
@@ -113,7 +111,11 @@
 
 .theme-toggle:hover {
   background-color: rgba(255, 255, 255, 0.1);
-  transform: rotate(15deg);
+  transform: rotate(5deg);
+}
+
+.theme-toggle svg {
+  stroke: var(--text-primary); /* Garante que os ícones SVG sejam visíveis */
 }
 
 /* Menu mobile */

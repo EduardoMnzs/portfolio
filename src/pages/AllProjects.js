@@ -1,14 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
-import '../styles/Projects.css';
-import ProjectModal from './ProjectModal';
+import '../styles/Projects.css'; // Reusing the Projects.css for consistent styling
+import ProjectModal from '../components/ProjectModal';
 
-const Projects = () => {
+const AllProjects = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [selectedProject, setSelectedProject] = useState(null);
   const sectionRef = useRef(null);
-  
-  // Projetos com mais detalhes
+
   const projects = [
     {
       id: 1,
@@ -60,7 +58,6 @@ const Projects = () => {
     }
   ];
 
-  // Detectar quando a seção entra na viewport
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -85,11 +82,11 @@ const Projects = () => {
   }, []);
 
   return (
-    <section className="projects" id="projects" ref={sectionRef}>
+    <section className="projects" id="all-projects" ref={sectionRef}>
       <div className="container">
         <h2 className={`projects-title ${isVisible ? 'animate-in' : ''}`}>
           <span className="text-gradient">
-            {'Projetos'.split('').map((char, index) => <span key={index} style={{ animationDelay: `${0.1 + index * 0.08}s` }}>{char}</span>)}
+            {'Todos os Projetos'.split('').map((char, index) => <span key={index} style={{ animationDelay: `${0.1 + index * 0.08}s` }}>{char}</span>)}
           </span>
         </h2>
         
@@ -141,11 +138,6 @@ const Projects = () => {
             </div>
           ))}
         </div>
-        <div className="projects-view-more">
-          <Link to="/projects" className="button button-primary">
-            Ver Mais Projetos
-          </Link>
-        </div>
       </div>
       
       {selectedProject && (
@@ -158,4 +150,4 @@ const Projects = () => {
   );
 };
 
-export default Projects;
+export default AllProjects;

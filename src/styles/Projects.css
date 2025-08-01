@@ -188,8 +188,31 @@
   font-size: var(--text-md);
   color: var(--text-secondary);
   margin-bottom: var(--spacing-md);
-  line-height: 1.6;
-  flex-grow: 1;
+}
+
+.projects-view-more {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--spacing-xl);
+}
+
+.projects-view-more .button {
+  padding: var(--spacing-md) var(--spacing-lg);
+  font-size: var(--text-lg);
+  border-radius: var(--border-radius-md);
+  text-decoration: none;
+  transition: all var(--transition-normal);
+}
+
+.projects-view-more .button-primary {
+  background: var(--gradient-blue);
+  color: var(--text-primary-dark);
+  border: none;
+}
+
+.projects-view-more .button-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
 }
 
 /* Tags */

@@ -1,0 +1,10 @@
+@import './global/index.css';
+
+/* Estilos específicos para o código */
+code {
+  font-family: var(--font-mono);
+  background-color: rgba(0, 0, 0, 0.1);
+  padding: 0.2rem 0.4rem;
+  border-radius: var(--border-radius-sm);
+  font-size: 0.9em;
+}

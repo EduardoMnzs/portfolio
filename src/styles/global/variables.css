@@ -23,6 +23,14 @@
   --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.1);
   --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.1);
   --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --shadow-lg-up: 0 -8px 16px rgba(0, 0, 0, 0.1);
+
+  /* Sombras - Tema claro */
+  --shadow-sm-light: 0 2px 4px rgba(0, 0, 0, 0.03);
+  --shadow-md-light: 0 4px 8px rgba(0, 0, 0, 0.06);
+  --shadow-lg-light: 0 8px 16px rgba(0, 0, 0, 0.08);
+  --shadow-xl-light: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.02);
+  --shadow-lg-up-light: 0 -8px 16px rgba(0, 0, 0, 0.08);
   
   /* Glassmorphism */
   --glass-background: rgba(15, 23, 42, 0.7);
@@ -87,6 +95,13 @@
   --text-secondary: var(--text-secondary-dark);
   --glass-bg: var(--glass-background);
   --glass-border-color: var(--glass-border);
+  --glow-color: rgba(59, 130, 246, 0.5);
+  --card-bg-transparent: rgba(30, 41, 59, 0.7);
+  --shadow-sm: var(--shadow-sm);
+  --shadow-md: var(--shadow-md);
+  --shadow-lg: var(--shadow-lg);
+  --shadow-xl: var(--shadow-xl);
+  --shadow-lg-up: var(--shadow-lg-up);
 }
 
 /* Classe para tema claro */
@@ -97,4 +112,11 @@
   --text-secondary: var(--text-secondary-light);
   --glass-bg: var(--glass-background-light);
   --glass-border-color: var(--glass-border-light);
+  --glow-color: rgba(59, 130, 246, 0.3);
+  --card-bg-transparent: rgba(255, 255, 255, 0.7);
+  --shadow-sm: var(--shadow-sm-light);
+  --shadow-md: var(--shadow-md-light);
+  --shadow-lg: var(--shadow-lg-light);
+  --shadow-xl: var(--shadow-xl-light);
+  --shadow-lg-up: var(--shadow-lg-up-light);
 }

@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import Particles from './Particles';
 import '../styles/Hero.css';
 
 const Hero = () => {
@@ -71,6 +72,7 @@ const Hero = () => {
         <div className="hero-gradient-2"></div>
         <div className="hero-gradient-3"></div>
       </div>
+      <Particles />
       
       <div className="hero-content">
         <h1 className="hero-title" ref={titleRef}>

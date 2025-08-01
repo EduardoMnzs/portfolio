@@ -4,10 +4,8 @@
   color: var(--text-primary);
   position: relative;
   overflow: hidden;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+
+
 }
 
 /* Background gradients */
@@ -70,14 +68,30 @@
   font-size: var(--text-4xl);
   margin-bottom: var(--spacing-xl);
   text-align: center;
+}
+
+.about-title .word-wrapper {
+  display: inline-block;
+  margin-right: 0.2em; /* Increased spacing between words */
+}
+
+.about-title span {
+  display: inline-block;
   opacity: 0;
-  transform: translateY(20px);
+  transform: translateY(20px) scale(0.8);
   transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
-.about-title.animate-in {
+.about-title.animate-in span {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateY(0) scale(1);
+}
+
+.about-title .text-gradient span {
+    background: var(--gradient-purple);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 /* Content wrapper */

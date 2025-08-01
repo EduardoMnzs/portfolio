@@ -16,13 +16,14 @@ const About = () => {
       { threshold: 0.2 }
     );
     
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
+    const currentRef = sectionRef.current;
+    if (currentRef) {
+      observer.observe(currentRef);
     }
     
     return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
+      if (currentRef) {
+        observer.unobserve(currentRef);
       }
     };
   }, []);
@@ -44,7 +45,12 @@ const About = () => {
       
       <div className="about-container">
         <h2 className={`about-title ${isVisible ? 'animate-in' : ''}`}>
-          Sobre <span className="text-gradient">Mim</span>
+          <span className="word-wrapper">
+            {'Sobre'.split('').map((char, index) => <span key={index} style={{ animationDelay: `${0.1 + index * 0.05}s` }}>{char}</span>)}
+          </span>
+          <span className="text-gradient word-wrapper">
+            {'Mim'.split('').map((char, index) => <span key={index} style={{ animationDelay: `${0.1 + ('Sobre'.length + 1 + index) * 0.05}s` }}>{char}</span>) }
+          </span>
         </h2>
         
         <div className="about-content-wrapper">

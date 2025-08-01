@@ -5,6 +5,8 @@ const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isDarkTheme, setIsDarkTheme] = useState(true);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [lastScrollY, setLastScrollY] = useState(0);
+  const [isHeaderVisible, setIsHeaderVisible] = useState(true);
 
   // Detectar scroll para mudar o estilo do header
   useEffect(() => {
@@ -14,11 +16,21 @@ const Header = () => {
       } else {
         setIsScrolled(false);
       }
+
+      if (window.scrollY > lastScrollY && window.scrollY > 100) {
+        // Scroll para baixo
+        setIsHeaderVisible(false);
+      } else {
+        // Scroll para cima
+        setIsHeaderVisible(true);
+      }
+
+      setLastScrollY(window.scrollY);
     };
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [lastScrollY]);
 
   // Alternar entre tema claro e escuro
   const toggleTheme = () => {
@@ -32,7 +44,7 @@ const Header = () => {
   };
 
   return (
-    <header className={`header glass ${isScrolled ? 'scrolled' : ''}`}>
+    <header className={`header glass ${isScrolled ? 'scrolled' : ''} ${isHeaderVisible ? '' : 'hidden'}`}>
       <div className="header-container">
         <a href="/" className="nav-logo">
           <span className="logo-text">EM</span>

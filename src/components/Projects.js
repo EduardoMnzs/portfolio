@@ -71,13 +71,14 @@ const Projects = () => {
       { threshold: 0.1 }
     );
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
+    const currentRef = sectionRef.current;
+    if (currentRef) {
+      observer.observe(currentRef);
     }
 
     return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
+      if (currentRef) {
+        observer.unobserve(currentRef);
       }
     };
   }, []);
@@ -86,7 +87,9 @@ const Projects = () => {
     <section className="projects" id="projects" ref={sectionRef}>
       <div className="container">
         <h2 className={`projects-title ${isVisible ? 'animate-in' : ''}`}>
-          <span className="text-gradient">Projetos</span>
+          <span className="text-gradient">
+            {'Projetos'.split('').map((char, index) => <span key={index} style={{ animationDelay: `${0.1 + index * 0.08}s` }}>{char}</span>)}
+          </span>
         </h2>
         
         <div className="projects-grid">
@@ -94,7 +97,15 @@ const Projects = () => {
             <div 
               key={project.id} 
               className={`project-card ${isVisible ? 'animate-in' : ''}`}
-              style={{ animationDelay: `${index * 200}ms` }}
+              style={{ animationDelay: `${0.2 + index * 0.15}s` }}
+              onMouseMove={(e) => {
+                const card = e.currentTarget;
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+              }}
             >
               <div className="project-image-container">
                 <img src={project.image} alt={project.title} className="project-image" />

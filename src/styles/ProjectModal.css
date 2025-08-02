@@ -47,8 +47,8 @@
   right: var(--spacing-md);
   background: rgba(0, 0, 0, 0.3);
   border: none;
-  width: 36px;
-  height: 36px;
+  width: 8%;
+  height: 8%;
   border-radius: var(--border-radius-full);
   display: flex;
   align-items: center;

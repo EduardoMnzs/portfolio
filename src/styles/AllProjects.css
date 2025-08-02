@@ -1,31 +1,35 @@
-/**
- * AllProjects.css (Simplificado)
- * Estilos sem a seção de detalhes expandidos.
- */
-
-/* --- Variáveis Globais (Exemplo) --- */
+/* --- Variáveis Globais --- */
 :root {
     --background: #0f172a;
-    --foreground: #f8fafc;
+    --text-primary: #f8fafc;
+    --text-primary-dark: #f8fafc;
     --text-secondary: #94a3b8;
     --card-bg-transparent: rgba(30, 41, 59, 0.7);
     --glass-border-color: rgba(148, 163, 184, 0.2);
+    --glow-color: rgba(59, 130, 246, 0.15);
     --accent-primary: #3b82f6;
     --accent-secondary: #8b5cf6;
     --gradient-purple: linear-gradient(135deg, #8b5cf6, #d946ef);
+    --gradient-blue: linear-gradient(135deg, #3b82f6, #06b6d4);
     --font-sans: 'Inter', system-ui, sans-serif;
-    --font-mono: 'JetBrains Mono', monospace;
     --border-radius-md: 0.5rem;
     --border-radius-lg: 1rem;
     --border-radius-full: 9999px;
     --transition-normal: 0.3s ease;
     --transition-fast: 0.2s ease;
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 0.75rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 1.5rem;
+    --spacing-xl: 2.5rem;
+    --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.1);
+    --shadow-xl: 0 8px 24px rgba(0, 0, 0, 0.2);
 }
 
 /* --- Estrutura da Página --- */
 .projects-page {
     background-color: var(--background);
-    color: var(--foreground);
+    color: var(--text-primary);
     min-height: 100vh;
     position: relative;
     overflow-x: hidden;
@@ -36,8 +40,7 @@
     position: fixed;
     inset: 0;
     z-index: 0;
-    background-image:
-        radial-gradient(circle at center, var(--glass-border-color) 1px, transparent 1px);
+    background-image: radial-gradient(circle at center, var(--glass-border-color) 1px, transparent 1px);
     background-size: 2.5rem 2.5rem;
     opacity: 0.3;
     pointer-events: none;
@@ -133,7 +136,7 @@
 .dropdown-button {
     background-color: var(--card-bg-transparent);
     backdrop-filter: blur(10px);
-    color: var(--foreground);
+    color: var(--text-primary);
     padding: 0.6rem 1.2rem;
     border: 1px solid var(--glass-border-color);
     border-radius: var(--border-radius-md);
@@ -146,7 +149,6 @@
 }
 
 .dropdown-button:hover {
-    background-color: rgba(255, 255, 255, 0.05);
     border-color: var(--accent-primary);
 }
 
@@ -186,43 +188,76 @@
 /* --- Grid e Cards --- */
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: var(--spacing-xl);
     padding-bottom: 4rem;
 }
 
 .project-card {
-    background-color: var(--card-bg-transparent);
-    backdrop-filter: blur(12px);
-    border: 1px solid var(--glass-border-color);
+    background-color: transparent;
     border-radius: var(--border-radius-lg);
     overflow: hidden;
-    transition: all 0.4s ease;
+    box-shadow: var(--shadow-md);
+    transition: all var(--transition-normal);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    border: 1px solid var(--glass-border-color);
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(30px);
+}
+
+.project-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: var(--border-radius-lg);
+    background: radial-gradient(350px circle at var(--mouse-x) var(--mouse-y), var(--glow-color), transparent 40%);
+    opacity: 0;
+    transition: opacity 0.3s ease-out;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.project-card:hover::before {
+    opacity: 1;
 }
 
 .project-card.animate-in {
-    opacity: 1;
-    transform: translateY(0);
+    animation: slideUp 0.6s ease forwards;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .project-card:hover {
-    border-color: rgba(255, 255, 255, 0.3);
-    transform: translateY(-5px) !important;
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-xl);
+    border-color: var(--accent-primary);
 }
 
 .project-image-container {
     position: relative;
-    height: 200px;
     overflow: hidden;
+    height: 200px;
+    z-index: 2;
 }
 
 .project-image {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.4s ease;
+    transition: transform var(--transition-normal);
 }
 
 .project-card:hover .project-image {
@@ -232,89 +267,151 @@
 .project-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to top, oklch(0.145 0 0 / 0.8) 0%, transparent 70%);
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.6));
+    opacity: 0;
+    transition: opacity var(--transition-normal);
 }
 
-.project-card-header {
-    position: absolute;
-    top: 1rem;
-    left: 1rem;
-    right: 1rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.badge-category {
-    background-color: rgba(15, 23, 42, 0.6);
-    backdrop-filter: blur(5px);
-    color: var(--foreground);
-    padding: 0.3rem 0.7rem;
-    border-radius: var(--border-radius-full);
-    font-size: 0.8rem;
-    font-weight: 500;
-    border: 1px solid var(--glass-border-color);
+.project-card:hover .project-overlay {
+    opacity: 1;
 }
 
 .project-links {
     display: flex;
-    gap: 0.75rem;
+    gap: var(--spacing-xs);
+    /* Add some space between links */
 }
 
 .project-links a {
-    color: var(--foreground);
-    background-color: rgba(15, 23, 42, 0.6);
-    border: 1px solid var(--glass-border-color);
-    backdrop-filter: blur(5px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 36px;
+    /* Smaller size for icons */
     height: 36px;
-    display: grid;
-    place-items: center;
     border-radius: 50%;
+    background-color: rgba(59, 130, 246, 0.2);
+    /* Lighter background */
+    color: var(--accent-primary);
+    /* Use accent color for icon */
     transition: all var(--transition-normal);
+    opacity: 1;
+    /* Always visible */
+    transform: none;
+    /* No initial transform */
 }
 
 .project-links a:hover {
     background-color: var(--accent-primary);
+    /* Solid background on hover */
+    color: var(--text-primary-dark);
+    /* White icon on hover */
     transform: scale(1.1);
 }
 
+.project-card-header {
+    position: absolute;
+    top: var(--spacing-md);
+    right: var(--spacing-md);
+    display: flex;
+    gap: var(--spacing-xs);
+    align-items: center;
+    z-index: 3;
+    width: 92%;
+    justify-content: space-between;
+}
+
+.badge-category {
+    background-color: var(--accent-secondary);
+    color: var(--text-primary-dark);
+    padding: 0.25rem 0.75rem;
+    border-radius: var(--border-radius-full);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
 .project-content {
-    padding: 1.5rem;
+    padding: var(--spacing-lg);
+    padding-top: calc(var(--spacing-lg) + 2.5rem);
+    /* Adjust padding to make space for header */
     display: flex;
     flex-direction: column;
     flex-grow: 1;
+    z-index: 2;
+    background-color: var(--card-bg-transparent);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-top: 1px solid var(--glass-border-color);
 }
 
-.project-content h3 {
-    font-size: 1.4rem;
-    margin-bottom: 0.25rem;
-    font-weight: 600;
+.project-title {
+    font-size: 1.25rem;
+    margin-bottom: var(--spacing-sm);
+    color: var(--text-primary);
+    position: relative;
+    display: inline-block;
 }
 
-.project-subtitle {
+.project-title::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 40px;
+    height: 3px;
+    background: var(--gradient-blue);
+    transition: width var(--transition-normal);
+}
+
+.project-card:hover .project-title::after {
+    width: 100%;
+}
+
+.project-description {
+    font-size: 1rem;
     color: var(--text-secondary);
-    margin-bottom: 1.25rem;
-    font-size: 0.95rem;
-    min-height: 2.85rem;
+    margin-bottom: var(--spacing-md);
 }
 
 .project-tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-top: auto;
-    padding-top: 1rem;
+    gap: var(--spacing-xs);
+    margin-bottom: var(--spacing-md);
 }
 
-.tag {
+.project-tag {
+    font-size: 0.75rem;
+    padding: 4px 10px;
+    border-radius: var(--border-radius-full);
     background-color: rgba(59, 130, 246, 0.1);
     color: var(--accent-primary);
-    padding: 0.3rem 0.6rem;
-    border-radius: var(--border-radius-full);
-    font-size: 0.75rem;
-    font-family: var(--font-mono);
     font-weight: 500;
+    transition: all var(--transition-normal);
+}
+
+.project-card:hover .project-tag {
+    background-color: rgba(59, 130, 246, 0.2);
+}
+
+.project-button {
+    align-self: flex-start;
+    margin-top: auto;
+}
+
+.button.button-secondary {
+    background: transparent;
+    border: 2px solid var(--accent-primary);
+    color: var(--accent-primary);
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+}
+
+.button.button-secondary:hover {
+    background-color: var(--accent-primary);
+    color: var(--text-primary-dark);
 }
 
 /* --- Paginação e Fallback --- */
@@ -323,7 +420,7 @@
     justify-content: center;
     align-items: center;
     gap: 0.5rem;
-    padding: 2rem 0 4rem;
+    padding: 0 0 4rem;
 }
 
 .pagination-button,
@@ -348,7 +445,7 @@
 .pagination-button:hover,
 .pagination-arrow:hover {
     border-color: var(--accent-primary);
-    color: var(--foreground);
+    color: var(--text-primary);
 }
 
 .pagination-button.active {
@@ -372,16 +469,6 @@
     max-width: 600px;
 }
 
-.no-projects-found h3 {
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
-}
-
-.no-projects-found p {
-    color: var(--text-secondary);
-    margin-bottom: 1.5rem;
-}
-
 .no-projects-found button {
     background: var(--gradient-blue);
     color: #fff;
@@ -392,10 +479,6 @@
     transition: all var(--transition-normal);
 }
 
-.no-projects-found button:hover {
-    transform: scale(1.05);
-}
-
 /* --- Responsividade --- */
 @media (max-width: 768px) {
     .container {
@@ -403,7 +486,7 @@
     }
 
     .projects-header {
-        padding-top: 6rem;
+        padding-top: 9rem;
     }
 
     .projects-grid {

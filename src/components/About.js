@@ -29,12 +29,11 @@ const About = () => {
   }, []);
 
   const skills = [
-    { name: 'React', level: 90 },
-    { name: 'JavaScript', level: 85 },
-    { name: 'Node.js', level: 80 },
-    { name: 'HTML/CSS', level: 95 },
-    { name: 'UI/UX Design', level: 75 },
-    { name: 'Git', level: 88 },
+    { name: 'React', level: 84 },
+    { name: 'Node.js', level: 77 },
+    { name: 'PostgreSQL', level: 74 },
+    { name: 'UI/UX Design', level: 95 },
+    { name: 'Git/GitHub', level: 78 },
   ];
 
   return (

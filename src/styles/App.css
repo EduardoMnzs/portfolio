@@ -23,6 +23,8 @@ html {
 ::-webkit-scrollbar-thumb {
   background: var(--accent-primary);
   border-radius: var(--border-radius-full);
+  border: 2px solid var(--background);
+  background-clip: padding-box;
 }
 
 ::-webkit-scrollbar-thumb:hover {

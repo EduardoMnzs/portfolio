@@ -64,7 +64,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <section className="hero">
+    <section className="hero" id='home'>
       <div className="hero-background" ref={backgroundRef}>
         <div className="hero-gradient-1"></div>
         <div className="hero-gradient-2"></div>

@@ -34,6 +34,7 @@ const About = () => {
     { name: 'Node.js', level: 80 },
     { name: 'HTML/CSS', level: 95 },
     { name: 'UI/UX Design', level: 75 },
+    { name: 'Git', level: 88 },
   ];
 
   return (

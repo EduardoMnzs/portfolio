@@ -193,8 +193,9 @@
 }
 
 .dropdown-content button:hover {
-    background-color: #06b6d4;
+    background-color: var(--accent-primary);
     color: var(--text-on-accent);
+    transform: translateX(5px);
 }
 
 /* --- Grid e Cards --- */

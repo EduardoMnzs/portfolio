@@ -6,15 +6,15 @@ import ClickSpark from './components/ClickSpark';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <ClickSpark
-    sparkColor={getComputedStyle(document.documentElement).getPropertyValue('--text-primary')}
-    sparkSize={10}
-    sparkRadius={15}
-    sparkCount={8}
-    duration={400}
-  >
-    <React.StrictMode>
+  <React.StrictMode>
+    <ClickSpark
+      sparkColor={getComputedStyle(document.documentElement).getPropertyValue('--text-primary')}
+      sparkSize={10}
+      sparkRadius={15}
+      sparkCount={8}
+      duration={400}
+    >
       <App />
-    </React.StrictMode>
-  </ClickSpark>
+    </ClickSpark>
+  </React.StrictMode>
 );

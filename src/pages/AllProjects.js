@@ -1,152 +1,134 @@
 import React, { useState, useEffect, useRef } from 'react';
-import '../styles/Projects.css'; // Reusing the Projects.css for consistent styling
-import ProjectModal from '../components/ProjectModal';
+import { Filter, ExternalLink, Github, ChevronLeft, ChevronRight } from 'lucide-react';
+import '../styles/AllProjects.css';
+
+// --- Dados dos Projetos (simplificados) ---
+const projects = [
+    { id: 1, title: "EcoCommerce Dashboard", subtitle: "Plataforma Sustentável de E-commerce", image: "https://via.placeholder.com/600x400/059669/f0fdfa?text=EcoCommerce", technologies: ["React", "Next.js", "TypeScript", "Prisma"], category: "Web App", githubUrl: "#", liveUrl: "#", color: "from-emerald-500 to-teal-600" },
+    { id: 2, title: "CollabFlow", subtitle: "Gestão de Projetos Inteligente", image: "https://via.placeholder.com/600x400/4f46e5/f0fdfa?text=CollabFlow", technologies: ["React", "Node.js", "Socket.io", "MongoDB"], category: "Web App", githubUrl: "#", liveUrl: "#", color: "from-indigo-500 to-purple-600" },
+    { id: 3, title: "WeatherWise", subtitle: "Previsão Meteorológica Inteligente", image: "https://via.placeholder.com/600x400/0284c7/f0fdfa?text=WeatherWise", technologies: ["React Native", "TypeScript", "Chart.js", "Expo"], category: "Mobile App", githubUrl: "#", liveUrl: "#", color: "from-sky-600 to-cyan-500" },
+    { id: 4, title: "DevPortfolio Pro", subtitle: "Portfólio Interativo de Nova Geração", image: "https://via.placeholder.com/600x400/7c3aed/f0fdfa?text=Portfolio+Pro", technologies: ["Next.js", "Three.js", "Framer Motion", "MDX"], category: "Website", githubUrl: "#", liveUrl: "#", color: "from-purple-600 to-violet-500" },
+    { id: 5, title: "TechBlog Engine", subtitle: "Plataforma de Conteúdo para Devs", image: "https://via.placeholder.com/600x400/db2777/f0fdfa?text=TechBlog", technologies: ["Next.js", "Supabase", "TypeScript", "Tailwind CSS"], category: "Web App", githubUrl: "#", liveUrl: "#", color: "from-pink-500 to-rose-500" },
+    { id: 6, title: "SaaS Landing Optimizer", subtitle: "Landing Page com IA de Conversão", image: "https://via.placeholder.com/600x400/ea580c/f0fdfa?text=SaaS+Optimizer", technologies: ["React", "Framer Motion", "Tailwind CSS", "TensorFlow.js"], category: "Website", githubUrl: "#", liveUrl: "#", color: "from-orange-500 to-red-500" },
+    { id: 7, title: "CryptoTracker", subtitle: "Dashboard de Criptomoedas", image: "https://via.placeholder.com/600x400/facc15/1e293b?text=CryptoTracker", technologies: ["Vue.js", "Node.js", "WebSockets", "Chart.js"], category: "Web App", githubUrl: "#", liveUrl: "#", color: "from-yellow-400 to-amber-500" },
+];
+
+const technologies = ["Todos", "React", "Next.js", "TypeScript", "Node.js", "Tailwind CSS", "MongoDB", "Three.js", "TensorFlow.js", "Vue.js"];
+const categories = ["Todos", "Web App", "Mobile App", "Website"];
+
+const PROJECTS_PER_PAGE = 6;
 
 const AllProjects = () => {
-  const [isVisible, setIsVisible] = useState(false);
-  const [selectedProject, setSelectedProject] = useState(null);
-  const sectionRef = useRef(null);
-
-  const projects = [
-    {
-      id: 1,
-      title: 'E-commerce App',
-      description: 'Plataforma de comércio eletrônico completa com pagamentos, carrinho de compras e painel de administração.',
-      tags: ['React', 'Node.js', 'MongoDB', 'Stripe', 'Redux', 'AWS'],
-      image: 'https://via.placeholder.com/600x340/252540/3b82f6?text=E-commerce+App',
-      link: '#',
-      fullDescription: 'Uma plataforma de e-commerce completa desenvolvida com arquitetura moderna e escalável. Implementei um sistema de pagamentos seguro com Stripe, carrinho de compras persistente, autenticação de usuários, painel de administração para gerenciamento de produtos e pedidos, e integração com serviços de entrega.',
-      highlights: [
-        'Sistema de pagamento seguro com Stripe',
-        'Painel administrativo com análise de vendas',
-        'Otimização de performance com lazy loading e code splitting',
-        'Implementação de PWA para experiência mobile aprimorada',
-        'Integração com serviços de entrega e rastreamento'
-      ]
-    },
-    {
-      id: 2,
-      title: 'Dashboard Analytics',
-      description: 'Dashboard interativo com visualização de dados em tempo real, gráficos e relatórios personalizados.',
-      tags: ['Vue.js', 'Express', 'D3.js', 'PostgreSQL', 'Socket.io', 'Docker'],
-      image: 'https://via.placeholder.com/600x340/252540/8b5cf6?text=Dashboard+Analytics',
-      link: '#',
-      fullDescription: 'Dashboard analítico interativo que processa e visualiza grandes volumes de dados em tempo real. Utilizei Vue.js para criar uma interface responsiva e dinâmica, D3.js para visualizações de dados complexas, Socket.io para atualizações em tempo real, e PostgreSQL para armazenamento eficiente de dados.',
-      highlights: [
-        'Visualizações de dados interativas e personalizáveis',
-        'Atualizações em tempo real com WebSockets',
-        'Sistema de exportação de relatórios em múltiplos formatos',
-        'Arquitetura escalável com Docker e microserviços',
-        'Implementação de filtros avançados e análise preditiva'
-      ]
-    },
-    {
-      id: 3,
-      title: 'App de Finanças',
-      description: 'Aplicativo para controle financeiro pessoal com categorização de gastos e visualização de tendências.',
-      tags: ['React Native', 'Firebase', 'Redux', 'Chart.js', 'Expo', 'Cloud Functions'],
-      image: 'https://via.placeholder.com/600x340/252540/06b6d4?text=App+de+Finanças',
-      link: '#',
-      fullDescription: 'Aplicativo mobile para controle financeiro pessoal desenvolvido com React Native e Firebase. Implementei funcionalidades como categorização automática de transações, visualização de tendências de gastos, definição de metas financeiras, notificações de orçamento e sincronização entre dispositivos.',
-      highlights: [
-        'Sincronização em tempo real entre dispositivos',
-        'Categorização inteligente de transações',
-        'Gráficos interativos para análise de gastos',
-        'Sistema de metas financeiras com notificações',
-        'Exportação de relatórios financeiros detalhados'
-      ]
-    }
-  ];
+  const [selectedTech, setSelectedTech] = useState("Todos");
+  const [selectedCategory, setSelectedCategory] = useState("Todos");
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [currentPage, setCurrentPage] = useState(1);
+  const [isGridVisible, setIsGridVisible] = useState(false);
+  const gridRef = useRef(null);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.1 }
-    );
+    const handleMouseMove = (e) => setMousePosition({ x: e.clientX, y: e.clientY });
+    window.addEventListener("mousemove", handleMouseMove);
 
-    const currentRef = sectionRef.current;
-    if (currentRef) {
-      observer.observe(currentRef);
-    }
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        setIsGridVisible(true);
+        observer.disconnect();
+      }
+    }, { threshold: 0.1 });
+
+    const currentGridRef = gridRef.current;
+    if (currentGridRef) observer.observe(currentGridRef);
 
     return () => {
-      if (currentRef) {
-        observer.unobserve(currentRef);
-      }
+      window.removeEventListener("mousemove", handleMouseMove);
+      if (currentGridRef) observer.unobserve(currentGridRef);
     };
   }, []);
 
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [selectedTech, selectedCategory]);
+
+  const filteredProjects = projects.filter((project) => {
+    const techMatch = selectedTech === "Todos" || project.technologies.includes(selectedTech);
+    const categoryMatch = selectedCategory === "Todos" || project.category === selectedCategory;
+    return techMatch && categoryMatch;
+  });
+
+  const totalPages = Math.ceil(filteredProjects.length / PROJECTS_PER_PAGE);
+  const indexOfLastProject = currentPage * PROJECTS_PER_PAGE;
+  const indexOfFirstProject = indexOfLastProject - PROJECTS_PER_PAGE;
+  const currentProjects = filteredProjects.slice(indexOfFirstProject, indexOfLastProject);
+
+  const paginate = (pageNumber) => {
+    setCurrentPage(pageNumber);
+    gridRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
-    <section className="projects" id="all-projects" ref={sectionRef}>
-      <div className="container">
-        <h2 className={`projects-title ${isVisible ? 'animate-in' : ''}`}>
-          <span className="text-gradient">
-            {'Todos os Projetos'.split('').map((char, index) => <span key={index} style={{ animationDelay: `${0.1 + index * 0.08}s` }}>{char}</span>)}
-          </span>
-        </h2>
-        
-        <div className="projects-grid">
-          {projects.map((project, index) => (
+    <div className="projects-page">
+      <div className="animated-background" style={{ '--mouse-x': `${mousePosition.x}px`, '--mouse-y': `${mousePosition.y}px` }} />
+      
+      <header className="projects-header">
+        <div className="container">
+          <h1><span className="block">Transformando Ideias</span><span className="block text-gradient">em Realidade Digital</span></h1>
+          <p>Cada projeto é uma jornada de inovação, desafios superados e soluções criativas. Explore meu trabalho.</p>
+        </div>
+      </header>
+
+      <main className="container">
+        <div className="filters-section">
+          <h2>Explore Meus Projetos</h2>
+          <p>Filtre por tecnologia ou categoria para encontrar o que você procura.</p>
+          <div className="filters-controls">
+            <div className="dropdown"><button className="dropdown-button"><Filter size={16} /> Tecnologia: {selectedTech}</button><div className="dropdown-content">{technologies.map((tech) => (<a key={tech} href="#" onClick={(e) => {e.preventDefault(); setSelectedTech(tech);}}>{tech}</a>))}</div></div>
+            <div className="dropdown"><button className="dropdown-button"><Filter size={16} /> Categoria: {selectedCategory}</button><div className="dropdown-content">{categories.map((cat) => (<a key={cat} href="#" onClick={(e) => {e.preventDefault(); setSelectedCategory(cat);}}>{cat}</a>))}</div></div>
+          </div>
+        </div>
+
+        <div className="projects-grid" ref={gridRef}>
+          {currentProjects.map((project, index) => (
             <div 
               key={project.id} 
-              className={`project-card ${isVisible ? 'animate-in' : ''}`}
-              style={{ animationDelay: `${0.2 + index * 0.15}s` }}
-              onMouseMove={(e) => {
-                const card = e.currentTarget;
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                card.style.setProperty('--mouse-x', `${x}px`);
-                card.style.setProperty('--mouse-y', `${y}px`);
-              }}
+              className={`project-card ${isGridVisible ? 'animate-in' : ''}`} 
+              style={{ 'animationDelay': `${0.1 + index * 0.05}s`}}
             >
               <div className="project-image-container">
                 <img src={project.image} alt={project.title} className="project-image" />
-                <div className="project-overlay">
-                  <a href={project.link} className="project-link">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                      <polyline points="15 3 21 3 21 9"></polyline>
-                      <line x1="10" y1="14" x2="21" y2="3"></line>
-                    </svg>
-                  </a>
+                <div className="project-overlay" />
+                <div className="project-card-header">
+                  <span className="badge-category">{project.category}</span>
+                  <div className="project-links">
+                    <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()} aria-label="Ver projeto ao vivo"><ExternalLink size={18} /></a>
+                    <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()} aria-label="Ver código no Github"><Github size={18} /></a>
+                  </div>
                 </div>
               </div>
-              
               <div className="project-content">
-                <h3 className="project-title">{project.title}</h3>
-                <p className="project-description">{project.description}</p>
-                
+                <h3>{project.title}</h3>
+                <p className="project-subtitle">{project.subtitle}</p>
                 <div className="project-tags">
-                  {project.tags.map((tag, i) => (
-                    <span key={i} className="project-tag">{tag}</span>
-                  ))}
+                  {project.technologies.map((tech) => <span key={tech} className="tag">{tech}</span>)}
                 </div>
-                
-                <button 
-                  className="button button-secondary project-button"
-                  onClick={() => setSelectedProject(project)}
-                >
-                  Ver Projeto
-                </button>
               </div>
             </div>
           ))}
         </div>
-      </div>
-      
-      {selectedProject && (
-        <ProjectModal 
-          project={selectedProject} 
-          onClose={() => setSelectedProject(null)} 
-        />
-      )}
-    </section>
+
+        {totalPages > 1 && (
+          <div className="pagination-container">
+            <button onClick={() => paginate(currentPage - 1)} disabled={currentPage === 1} className="pagination-arrow"><ChevronLeft size={20} /></button>
+            {[...Array(totalPages).keys()].map(number => (
+              <button key={number + 1} onClick={() => paginate(number + 1)} className={`pagination-button ${currentPage === number + 1 ? 'active' : ''}`}>{number + 1}</button>
+            ))}
+            <button onClick={() => paginate(currentPage + 1)} disabled={currentPage === totalPages} className="pagination-arrow"><ChevronRight size={20} /></button>
+          </div>
+        )}
+
+        {filteredProjects.length === 0 && (<div className="no-projects-found"><h3>Nenhum projeto encontrado</h3><p>Tente ajustar seus filtros para ver mais do meu trabalho.</p><button onClick={() => { setSelectedTech("Todos"); setSelectedCategory("Todos"); }}>Limpar Filtros</button></div>)}
+      </main>
+    </div>
   );
 };
 

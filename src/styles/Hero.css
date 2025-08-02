@@ -65,7 +65,7 @@
   max-width: var(--content-width-lg);
   width: 100%;
   z-index: 1;
-  text-align: left;
+  text-align: center;
   position: relative;
 }
 
@@ -236,10 +236,6 @@
 @media (max-width: 768px) {
   .hero {
     padding: 0 var(--spacing-md);
-    text-align: center;
-  }
-  
-  .hero-content {
     text-align: center;
   }
   

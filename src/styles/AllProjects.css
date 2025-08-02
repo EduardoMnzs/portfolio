@@ -158,31 +158,43 @@
     top: 110%;
     left: 50%;
     transform: translateX(-50%);
-    background-color: rgba(30, 41, 59, 0.9);
+    background-color: var(--bg-secondary-transparent);
     backdrop-filter: blur(10px);
     min-width: 220px;
     z-index: 10;
     border: 1px solid var(--glass-border-color);
-    border-radius: var(--border-radius-md);
-    padding: 0.5rem;
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-lg);
+    padding: 0.75rem;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
 }
 
 .dropdown:hover .dropdown-content {
     display: block;
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(-10px);
 }
 
-.dropdown-content a {
+.dropdown-content button {
     color: var(--text-secondary);
     padding: 0.6rem 1rem;
-    border-radius: 0.25rem;
+    border-radius: var(--border-radius-sm);
     text-decoration: none;
     display: block;
-    transition: all var(--transition-fast);
+    width: 100%;
+    text-align: left;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
 }
 
-.dropdown-content a:hover {
-    background-color: var(--accent-primary);
-    color: #fff;
+.dropdown-content button:hover {
+    background-color: #06b6d4;
+    color: var(--text-on-accent);
 }
 
 /* --- Grid e Cards --- */

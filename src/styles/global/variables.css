@@ -1,6 +1,6 @@
 :root {
   /* Cores principais - Tema escuro */
-  --background-dark: #0f172a;
+  --background-dark: #000000;
   --background-card-dark: #1e293b;
   --text-primary-dark: #f8fafc;
   --text-secondary-dark: #cbd5e1;
@@ -97,6 +97,7 @@
   --glass-border-color: var(--glass-border);
   --glow-color: rgba(59, 130, 246, 0.5);
   --card-bg-transparent: rgba(30, 41, 59, 0.7);
+  --bg-secondary-transparent: rgba(30, 41, 59, 0.9); /* Cor para dropdowns e elementos transparentes no tema escuro */
   --shadow-sm: var(--shadow-sm);
   --shadow-md: var(--shadow-md);
   --shadow-lg: var(--shadow-lg);
@@ -114,6 +115,7 @@
   --glass-border-color: var(--glass-border-light);
   --glow-color: rgba(59, 130, 246, 0.3);
   --card-bg-transparent: rgba(255, 255, 255, 0.7);
+  --bg-secondary-transparent: rgba(255, 255, 255, 0.9); /* Cor para dropdowns e elementos transparentes no tema claro */
   --shadow-sm: var(--shadow-sm-light);
   --shadow-md: var(--shadow-md-light);
   --shadow-lg: var(--shadow-lg-light);

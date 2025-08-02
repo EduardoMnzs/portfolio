@@ -89,8 +89,8 @@ const AllProjects = () => {
                     <h2>Explore Meus Projetos</h2>
                     <p>Filtre por tecnologia ou categoria para encontrar o que você procura.</p>
                     <div className="filters-controls">
-                        <div className="dropdown"><button className="dropdown-button"><Filter size={16} /> Tecnologia: {selectedTech}</button><div className="dropdown-content">{technologies.map(tech => <a key={tech} href="#" onClick={e => { e.preventDefault(); setSelectedTech(tech); }}>{tech}</a>)}</div></div>
-                        <div className="dropdown"><button className="dropdown-button"><Filter size={16} /> Categoria: {selectedCategory}</button><div className="dropdown-content">{categories.map(cat => <a key={cat} href="#" onClick={e => { e.preventDefault(); setSelectedCategory(cat); }}>{cat}</a>)}</div></div>
+                        <div className="dropdown"><button className="dropdown-button"><Filter size={16} /> Tecnologia: {selectedTech}</button><div className="dropdown-content">{technologies.map(tech => <button key={tech} onClick={() => setSelectedTech(tech)}>{tech}</button>)}</div></div>
+                        <div className="dropdown"><button className="dropdown-button"><Filter size={16} /> Categoria: {selectedCategory}</button><div className="dropdown-content">{categories.map(cat => <button key={cat} onClick={() => setSelectedCategory(cat)}>{cat}</button>)}</div></div>
                     </div>
                 </section>
 

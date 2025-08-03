@@ -4,6 +4,7 @@ import { ExternalLink, Github } from 'lucide-react';
 import '../styles/Projects.css';
 import ProjectModal from './ProjectModal';
 import UniRecognition from '../assets/images/UniRecognition.jpg';
+import MotionLab from '../assets/images/Motionlab.jpg';
 
 const Projects = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -32,11 +33,11 @@ const Projects = () => {
     },
     {
       id: 2,
-      category: 'Data Analytics',
-      title: 'Dashboard Analytics',
-      description: 'Dashboard interativo com visualização de dados em tempo real, gráficos e relatórios personalizados.',
-      tags: ['Vue.js', 'Express', 'D3.js', 'PostgreSQL', 'Socket.io', 'Docker'],
-      image: 'https://via.placeholder.com/600x340/252540/8b5cf6?text=Dashboard+Analytics',
+      category: 'Desenvolvimento Web',
+      title: 'MotionLab',
+      description: 'Plataforma de análise de marcha com sistemas embarcados e visão computacional',
+      tags: ['React', 'Node.js', 'Python', 'PostgreSQL', 'Docker', 'AWS'],
+      image: MotionLab,
       liveUrl: 'https://example.com/dashboard',
       githubUrl: 'https://github.com/example/dashboard',
       fullDescription: 'Dashboard analítico interativo que processa e visualiza grandes volumes de dados em tempo real. Utilizei Vue.js para criar uma interface responsiva e dinâmica, D3.js para visualizações de dados complexas, Socket.io para atualizações em tempo real, e PostgreSQL para armazenamento eficiente de dados.',

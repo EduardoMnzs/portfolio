@@ -2,39 +2,181 @@ import React, { useState, useEffect, useRef } from 'react';
 import { ExternalLink, Github, Filter, ChevronLeft, ChevronRight } from 'lucide-react';
 import '../styles/AllProjects.css';
 import ProjectModal from '../components/ProjectModal';
+import UniRecognition from '../assets/images/UniRecognition.jpg';
+import MotionLab from '../assets/images/Motionlab.jpg';
+import PandoraAI from '../assets/images/Pandora.jpg';
+import LaserKiller from '../assets/images/LaserKiller.jpg';
+import LoginPageInterfocus from '../assets/images/LoginPageInterfocus.jpg';
+
+// --- DADOS E CONSTANTES ---
 
 const projects = [
-    { id: 1, category: "Web Development", title: "E-commerce App", description: "Plataforma de e-commerce completa com pagamentos, carrinho e painel de administração.", technologies: ["React", "Next.js", "TypeScript", "Prisma"], image: "https://via.placeholder.com/600x400/059669/f0fdfa?text=EcoCommerce", liveUrl: 'https://example.com/ecommerce', githubUrl: 'https://github.com/example/ecommerce', fullDescription: 'Uma plataforma de e-commerce completa desenvolvida com arquitetura moderna e escalável. Implementei um sistema de pagamentos seguro com Stripe, carrinho de compras persistente, autenticação de usuários, painel de administração para gerenciamento de produtos e pedidos, e integração com serviços de entrega.', highlights: ['Sistema de pagamento seguro com Stripe', 'Painel administrativo com análise de vendas', 'Otimização de performance com lazy loading e code splitting', 'Implementação de PWA para experiência mobile aprimorada', 'Integração com serviços de entrega e rastreamento'] },
-    { id: 2, category: "Data Analytics", title: "CollabFlow", description: "Plataforma de gerenciamento de projetos com IA para equipes remotas.", technologies: ["React", "Node.js", "Socket.io", "MongoDB"], image: "https://via.placeholder.com/600x400/4f46e5/f0fdfa?text=CollabFlow", liveUrl: 'https://example.com/collabflow', githubUrl: 'https://github.com/example/collabflow', fullDescription: 'Plataforma de gerenciamento de projetos com IA para equipes remotas, otimizando a colaboração e produtividade. Implementei funcionalidades como chat em tempo real, compartilhamento de arquivos, gestão de tarefas e integração com ferramentas de IA para automação de fluxos de trabalho.', highlights: ['Chat em tempo real com Socket.io', 'Integração com IA para automação de tarefas', 'Gestão de projetos e tarefas personalizáveis', 'Colaboração em equipe e compartilhamento de arquivos', 'Notificações e lembretes inteligentes'] },
-    { id: 3, category: "Mobile App", title: "WeatherWise", description: "App de previsão do tempo com machine learning e interface adaptativa.", technologies: ["React Native", "TypeScript", "Chart.js", "Expo"], image: "https://via.placeholder.com/600x400/0284c7/f0fdfa?text=WeatherWise", liveUrl: 'https://example.com/weatherwise', githubUrl: 'https://github.com/example/weatherwise', fullDescription: 'Aplicativo de previsão do tempo com machine learning para oferecer previsões precisas e personalizadas. A interface adaptativa se ajusta às preferências do usuário e às condições climáticas, proporcionando uma experiência intuitiva e rica em dados.', highlights: ['Previsões precisas com machine learning', 'Interface adaptativa e personalizável', 'Alertas de tempo severo em tempo real', 'Integração com APIs de geolocalização', 'Gráficos interativos de tendências climáticas'] },
-    { id: 4, category: "Website", title: "DevPortfolio Pro", description: "Portfólio com CMS, animações 3D e modo escuro inteligente.", technologies: ["Next.js", "Three.js", "Framer Motion", "MDX"], image: "https://via.placeholder.com/600x400/7c3aed/f0fdfa?text=Portfolio+Pro", liveUrl: 'https://example.com/portfolio', githubUrl: 'https://github.com/example/portfolio', fullDescription: 'Sistema de portfólio profissional com CMS integrado para fácil atualização de conteúdo. Inclui animações 3D interativas, modo escuro inteligente que se ajusta automaticamente, e seção de blog para compartilhar conhecimentos técnicos.', highlights: ['CMS personalizado para fácil atualização', 'Animações 3D com Three.js', 'Modo escuro inteligente baseado em preferências', 'Seção de blog com suporte a MDX', 'Otimizado para SEO e performance'] },
-    { id: 5, category: "Web App", title: "TechBlog Engine", description: "Engine de blog otimizada para conteúdo técnico com IA.", technologies: ["Next.js", "Supabase", "TypeScript", "Tailwind CSS"], image: "https://via.placeholder.com/600x400/db2777/f0fdfa?text=TechBlog", liveUrl: 'https://example.com/techblog', githubUrl: 'https://github.com/example/techblog', fullDescription: 'Engine de blog otimizada para conteúdo técnico, com funcionalidades de IA para geração de rascunhos, otimização de SEO e categorização automática de artigos. Inclui um editor de markdown avançado e integração com Supabase para gerenciamento de dados.', highlights: ['Geração de conteúdo com IA', 'Otimização de SEO integrada', 'Editor de markdown avançado', 'Integração com Supabase para backend', 'Categorização automática de artigos'] },
-    { id: 6, category: "Website", title: "SaaS Landing Optimizer", description: "Landing page inteligente que usa A/B testing para otimizar conversões.", technologies: ["React", "Framer Motion", "TensorFlow.js"], image: "https://via.placeholder.com/600x400/ea580c/f0fdfa?text=SaaS+Optimizer", liveUrl: 'https://example.com/saas-optimizer', githubUrl: 'https://github.com/example/saas-optimizer', fullDescription: 'Landing page inteligente projetada para otimizar taxas de conversão através de A/B testing contínuo e personalização dinâmica de conteúdo. Utiliza machine learning para identificar padrões de comportamento do usuário e adaptar a página em tempo real.', highlights: ['A/B testing integrado para otimização', 'Personalização dinâmica de conteúdo', 'Integração com TensorFlow.js para ML no navegador', 'Análise de dados em tempo real', 'Design responsivo e de alta conversão'] },
-    { id: 7, category: "Web App", title: "CryptoTracker", description: "Dashboard em tempo real para monitoramento de criptomoedas.", technologies: ["Vue.js", "Node.js", "WebSockets", "Chart.js"], image: "https://via.placeholder.com/600x400/facc15/1e293b?text=CryptoTracker", liveUrl: 'https://example.com/cryptotracker', githubUrl: 'https://github.com/example/cryptotracker', fullDescription: 'Dashboard interativo para monitoramento em tempo real de criptomoedas. Utiliza WebSockets para atualizações instantâneas de preços e gráficos, permitindo aos usuários acompanhar suas carteiras e o mercado de forma eficiente.', highlights: ['Monitoramento em tempo real com WebSockets', 'Gráficos interativos de preços e volumes', 'Personalização de carteira e alertas', 'Integração com múltiplas exchanges', 'Análise de tendências de mercado'] },
+    {
+        id: 1,
+        category: 'Desenvolvimento Web',
+        title: 'Uni Recognition',
+        description: 'Plataforma de reconhecimento facial em Python para identificar e registrar presença de alunos em tempo real.',
+        technologies: ['Flask', 'Python', 'PostgreSQL', 'OpenCV', 'NumPy'],
+        image: UniRecognition,
+        liveUrl: null,
+        githubUrl: 'https://github.com/UniRecognition/UniRecognition',
+        fullDescription: `UniRecognition é uma plataforma inteligente de reconhecimento facial desenvolvida para facilitar o controle de presença em ambientes educacionais. Utilizando tecnologia avançada de identificação facial em tempo real, a plataforma permite que instituições de ensino otimizem o processo de registro de presença de alunos de forma automatizada, segura e eficiente.
+
+     A solução funciona da seguinte maneira: os usuários (alunos) realizam um cadastro inicial no sistema, onde suas imagens faciais são registradas e armazenadas de forma segura. A partir disso, por meio de uma câmera posicionada no ambiente (como uma sala de aula ou laboratório), o sistema realiza a leitura facial dos presentes, reconhecendo-os instantaneamente e registrando automaticamente sua presença na aula.
+
+     Além de reduzir a burocracia e o tempo gasto com listas de chamada manuais, o UniRecognition também garante mais precisão nos registros, evita fraudes e contribui para um ambiente mais tecnológico e moderno, garantindo ganho de tempo e eficiência para os docentes e instituições de ensino.
+
+     Seja para uso em universidades, escolas técnicas ou centros de treinamento, o UniRecognition representa um grande passo rumo à transformação digital na educação.`,
+        highlights: [
+            'Reconhecimento facial em tempo real',
+            'Registro de presença de alunos',
+            'Integração com sistema de turmas',
+            'Interface amigável para cadastro e gerenciamento de turmas',
+            'Sistema de autenticação de usuários'
+        ]
+    },
+    {
+        id: 2,
+        category: 'Desenvolvimento Web',
+        title: 'MotionLab',
+        description: 'Plataforma de análise de marcha com sistemas embarcados e visão computacional',
+        technologies: ['React', 'Node.js', 'Python', 'PostgreSQL', 'Docker', 'AWS'],
+        image: MotionLab,
+        liveUrl: 'https://motionlab.gaek.com.br',
+        githubUrl: 'https://github.com/MotionLab-Research',
+        fullDescription: `MotionLab é uma plataforma de análise biomecânica da marcha desenvolvida para avaliar e monitorar o padrão de locomoção de indivíduos em reabilitação, especialmente aqueles que passaram por um acidente vascular cerebral (AVC). Através da integração entre sistemas embarcados, como sensores inerciais (MPU9250), e visão computacional, o MotionLab possibilita uma coleta precisa de dados sobre a marcha em diferentes tipos de superfícies, replicando cenários do dia a dia do paciente.
+
+     A plataforma é capaz de capturar, processar e analisar variáveis biomecânicas em tempo real, fornecendo métricas detalhadas sobre o movimento corporal. Essas informações são visualizadas em um painel interativo que permite a profissionais da saúde (fisioterapeutas e pesquisadores) acompanhar a evolução funcional do paciente e adaptar os planos terapêuticos com base em dados objetivos.
+
+     Com suporte a sensores vestíveis, algoritmos de segmentação de vídeo e processamento de sinais, o MotionLab oferece:
+     - Registro e análise da marcha em superfícies planas e irregulares
+     - Identificação de fases da marcha e eventos como apoio e oscilação
+     - Detecção de assimetrias e alterações posturais características do pós-AVC
+     - Exportação de relatórios e gráficos para acompanhamento clínico
+
+     A solução foi desenvolvida com foco em acessibilidade e escalabilidade, podendo ser implementada em clínicas, centros de reabilitação ou instituições de pesquisa.`,
+        highlights: [
+            'Análise biomecânica da marcha em diferentes superfícies',
+            'Reconhecimento de padrões de movimento com visão computacional',
+            'Coleta de dados com sensores inerciais (sistemas embarcados)',
+            'Interface de dashboard com gráficos e relatórios',
+            'Foco em pacientes em reabilitação pós-AVC'
+        ]
+    },
+    {
+        id: 3,
+        category: 'Mobile App',
+        title: 'Pandora AI',
+        description: 'A Pandora utiliza reconhecimento de voz para auxiliar no dia a dia, permitindo que os usuários recebam respostas em tempo real.',
+        technologies: ['React Native', 'Python', 'GeminiAPI', 'ElevenLabs', 'Expo'],
+        image: PandoraAI,
+        liveUrl: null,
+        githubUrl: 'https://github.com/EduardoMnzs/Pandora-1.0',
+        fullDescription: `Pandora AI é uma aplicação mobile desenvolvida para proporcionar uma experiência de assistente pessoal baseada em comandos de voz. Utilizando tecnologias de reconhecimento de fala e inteligência artificial, a plataforma permite que os usuários interajam por voz e recebam respostas em tempo real de maneira fluida e contextual.
+
+     A aplicação identifica a fala do usuário, interpreta a mensagem utilizando modelos de linguagem como a GeminiAPI, e retorna respostas personalizadas por meio de síntese de voz (Text-to-Speech) com o apoio da ElevenLabs. Essa abordagem torna a Pandora especialmente útil em momentos em que a digitação não é prática — como ao dirigir, praticar atividades físicas ou realizar tarefas domésticas.
+
+     Projetada com uma interface amigável, a aplicação oferece:
+     - Reconhecimento preciso da fala mesmo em ambientes ruidosos
+     - Integração com APIs modernas para entendimento e geração de linguagem natural
+     - Feedback por voz com timbre natural e agradável
+     - Possibilidade de personalização das interações e expansão para novos comandos
+
+     Pandora AI representa uma solução prática, acessível e inteligente para quem busca um assistente de voz leve e eficiente no celular.`,
+        highlights: [
+            'Reconhecimento de voz para auxiliar no dia a dia',
+            'Respostas em tempo real com uso de inteligência artificial',
+            'Integração com GeminiAPI e ElevenLabs',
+            'Interface mobile amigável e responsiva',
+            'Assistente pessoal leve, intuitivo e personalizável'
+        ]
+    },
+    {
+        id: 4,
+        category: 'Sistemas Embarcados',
+        title: 'Laser Killer',
+        description: 'Sistema com ESP32-CAM que utiliza IA para identificar ervas daninhas e acionar um mecanismo de resposta.',
+        technologies: ['ESP32-CAM', 'Python', 'OpenCV', 'Flask', 'IoT'],
+        image: LaserKiller,
+        liveUrl: null,
+        githubUrl: 'https://github.com/Kauefranca/LaserKiller',
+        fullDescription: `O Laser Killer é um sistema inteligente embarcado desenvolvido com o microcontrolador ESP32-CAM, projetado para atuar no controle de ervas daninhas de forma automatizada. Utilizando uma rede neural leve, o dispositivo é capaz de capturar imagens do solo, identificar em tempo real a presença de ervas daninhas e acionar um mecanismo — como um laser, LED ou outro atuador — para responder à detecção.
+
+        A câmera integrada ao ESP32-CAM transmite imagens para o modelo embarcado, que realiza a inferência diretamente no dispositivo, sem necessidade de conexão com servidores externos. Isso garante eficiência, baixo consumo de energia e independência da internet, tornando o sistema ideal para uso em ambientes rurais e plantações remotas.
+
+        O projeto une conceitos de visão computacional, aprendizado de máquina e IoT em um único dispositivo portátil e acessível. Com potencial para expansão, o sistema pode ser integrado a drones, robôs agrícolas ou veículos autônomos.
+
+        Principais recursos:
+        - Detecção em tempo real de ervas daninhas com IA embarcada
+        - Processamento local via ESP32-CAM
+        - Acionamento automático de mecanismo de resposta (ex: laser)
+        - Projeto de baixo custo e fácil implementação
+        - Potencial de uso em automação agrícola e robótica`,
+        highlights: [
+            'Identificação de ervas daninhas com IA embarcada',
+            'Processamento de imagem local no ESP32-CAM',
+            'Resposta automatizada com laser ou atuadores',
+            'Sistema eficiente e de baixo custo',
+            'Aplicação prática em automação agrícola'
+        ]
+    },
+    {
+        id: 5,
+        category: 'Desenvolvimento Web',
+        title: 'Login Page c/ Sessão Exclusiva',
+        description: 'Sistema de login que gerencia sessões de usuário únicas, derrubando acessos anteriores ao novo login.',
+        technologies: ['React', 'Node.js', 'Express', 'JWT', 'PostgreSQL', 'Session Management'],
+        image: LoginPageInterfocus,
+        liveUrl: 'https://interfocus.labs.unimar.br/',
+        githubUrl: 'https://github.com/Kauefranca/FPAG04',
+        fullDescription: `Esta Login Page foi desenvolvida para a Interfocus como parte de uma solução corporativa aplicada em ambiente de fábrica de projetos. A principal funcionalidade da aplicação é o controle rigoroso de sessões: ao autenticar um usuário, o sistema encerra automaticamente qualquer sessão ativa anterior vinculada àquele mesmo login.
+
+        Utilizando backend em Node.js com Express, banco de dados PostgreSQL e autenticação baseada em tokens JWT, o sistema garante que apenas uma sessão por usuário esteja ativa a qualquer momento. Isso é essencial em contextos industriais e corporativos onde o controle de acesso é crítico — como no caso de ambientes compartilhados em fábricas, centros de monitoramento ou sistemas administrativos.
+
+        O design da aplicação é simples e direto, com foco na segurança e estabilidade das sessões, garantindo que os usuários tenham acesso contínuo e exclusivo, e que não ocorra sobreposição de sessões acidentais ou indevidas.
+
+        A estrutura é escalável e pode ser integrada com APIs RESTful, camadas de autenticação mais avançadas (como MFA) e sistemas de auditoria para rastreamento de acessos.`,
+
+        highlights: [
+            'Sessão exclusiva: um login derruba o anterior',
+            'Controle de sessão com JWT e PostgreSQL',
+            'Aplicação segura e estável para ambientes corporativos',
+            'Desenvolvido para uso interno na Interfocus',
+            'Preparado para expansão com MFA ou auditoria'
+        ]
+    }
 ];
 
-const technologies = ["Todos", "React", "Next.js", "TypeScript", "Node.js", "Vue.js"];
-const categories = ["Todos", "Web App", "Mobile App", "Website"];
+const technologies = ["Todos", "React", "Flask", "React Native", "Node.js", "Python"];
+const categories = ["Todos", "Desenvolvimento Web", "Mobile App", "Sistemas Embarcados"];
 const PROJECTS_PER_PAGE = 6;
 
+
+// --- COMPONENTE ---
+
 const AllProjects = () => {
-  const [selectedProject, setSelectedProject] = useState(null);
-
-  const openModal = (project) => {
-    setSelectedProject(project);
-    document.body.style.overflow = 'hidden';
-  };
-
-  const closeModal = () => {
-    setSelectedProject(null);
-    document.body.style.overflow = 'auto';
-  };
+    const [selectedProject, setSelectedProject] = useState(null);
     const [selectedTech, setSelectedTech] = useState("Todos");
     const [selectedCategory, setSelectedCategory] = useState("Todos");
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
     const [currentPage, setCurrentPage] = useState(1);
     const [isGridVisible, setIsGridVisible] = useState(false);
     const gridRef = useRef(null);
+
+    const openModal = (project) => {
+        setSelectedProject(project);
+        document.body.style.overflow = 'hidden';
+    };
+
+    const closeModal = () => {
+        setSelectedProject(null);
+        document.body.style.overflow = 'auto';
+    };
+
+    const paginate = (pageNumber) => {
+        setCurrentPage(pageNumber);
+        gridRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    };
 
     useEffect(() => {
         const handleMouseMove = (e) => setMousePosition({ x: e.clientX, y: e.clientY });
@@ -68,15 +210,10 @@ const AllProjects = () => {
     const totalPages = Math.ceil(filteredProjects.length / PROJECTS_PER_PAGE);
     const currentProjects = filteredProjects.slice((currentPage - 1) * PROJECTS_PER_PAGE, currentPage * PROJECTS_PER_PAGE);
 
-    const paginate = (pageNumber) => {
-        setCurrentPage(pageNumber);
-        gridRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    };
-
     return (
         <div className="projects-page">
             <div className="animated-background" style={{ '--mouse-x': `${mousePosition.x}px`, '--mouse-y': `${mousePosition.y}px` }} />
-            
+
             <header className="projects-header">
                 <div className="container">
                     <h1><span className="block">Transformando Ideias</span><span className="block text-gradient">em Realidade Digital</span></h1>
@@ -89,19 +226,30 @@ const AllProjects = () => {
                     <h2>Explore Meus Projetos</h2>
                     <p>Filtre por tecnologia ou categoria para encontrar o que você procura.</p>
                     <div className="filters-controls">
-                        <div className="dropdown"><button className="dropdown-button"><Filter size={16} /> Tecnologia: {selectedTech}</button><div className="dropdown-content">{technologies.map(tech => <button key={tech} onClick={() => setSelectedTech(tech)}>{tech}</button>)}</div></div>
-                        <div className="dropdown"><button className="dropdown-button"><Filter size={16} /> Categoria: {selectedCategory}</button><div className="dropdown-content">{categories.map(cat => <button key={cat} onClick={() => setSelectedCategory(cat)}>{cat}</button>)}</div></div>
+                        <div className="dropdown">
+                            <button className="dropdown-button"><Filter size={16} /> Tecnologia: {selectedTech}</button>
+                            <div className="dropdown-content">{technologies.map(tech => <button key={tech} onClick={() => setSelectedTech(tech)}>{tech}</button>)}</div>
+                        </div>
+                        <div className="dropdown">
+                            <button className="dropdown-button"><Filter size={16} /> Categoria: {selectedCategory}</button>
+                            <div className="dropdown-content">{categories.map(cat => <button key={cat} onClick={() => setSelectedCategory(cat)}>{cat}</button>)}</div>
+                        </div>
                     </div>
                 </section>
 
                 <div className="projects-grid" ref={gridRef}>
                     {currentProjects.map((project, index) => (
-                        <div key={project.id} className={`project-card ${isGridVisible ? 'animate-in' : ''}`} style={{ animationDelay: `${0.1 + index * 0.1}s` }} onMouseMove={e => {
-                            const card = e.currentTarget;
-                            const rect = card.getBoundingClientRect();
-                            card.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
-                            card.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
-                        }}>
+                        <div
+                            key={project.id}
+                            className={`project-card ${isGridVisible ? 'animate-in' : ''}`}
+                            style={{ animationDelay: `${0.1 + index * 0.1}s` }}
+                            onMouseMove={e => {
+                                const card = e.currentTarget;
+                                const rect = card.getBoundingClientRect();
+                                card.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
+                                card.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
+                            }}
+                        >
                             <div className="project-image-container">
                                 <img src={project.image} alt={project.title} className="project-image" />
                                 <div className="project-card-header">
@@ -140,11 +288,12 @@ const AllProjects = () => {
                     </div>
                 )}
             </main>
+
             {selectedProject && (
-              <ProjectModal project={selectedProject} onClose={closeModal} />
+                <ProjectModal project={selectedProject} onClose={closeModal} />
             )}
         </div>
-  );
+    );
 };
 
 export default AllProjects;

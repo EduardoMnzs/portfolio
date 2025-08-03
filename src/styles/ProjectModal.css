@@ -63,13 +63,6 @@
   background-color: rgba(255, 255, 255, 0.1);
 }
 
-.project-modal-header {
-  width: 100%;
-  height: 250px;
-  overflow: hidden;
-  position: relative;
-}
-
 .project-modal-image {
   width: 100%;
   height: 100%;
@@ -119,11 +112,18 @@
   color: var(--accent-primary);
 }
 
+.project-modal-description-text {
+  margin-bottom: 1rem;
+  line-height: 1.6;
+  white-space: pre-wrap;
+}
+
 .project-modal-tech-list {
   list-style: none;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  gap: var(--spacing-sm);
+  padding-left: var(--spacing-md);
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
 }
 
 .project-modal-tech-item {
@@ -195,33 +195,26 @@
   .project-modal-content {
     max-height: 95vh;
   }
-  
-  .project-modal-header {
-    height: 180px;
-  }
-  
+
   .project-modal-body {
     padding: var(--spacing-lg);
   }
-  
+
   .project-modal-tech-list {
-    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    flex-direction: column;
   }
 }
 
 @media (max-width: 480px) {
-  .project-modal-header {
-    height: 150px;
-  }
-  
+
   .project-modal-body {
     padding: var(--spacing-md);
   }
-  
+
   .project-modal-tech-list {
-    grid-template-columns: 1fr 1fr;
+    flex-direction: column;
   }
-  
+
   .project-modal-footer {
     padding: var(--spacing-md);
   }

@@ -5,6 +5,7 @@ import '../styles/Projects.css';
 import ProjectModal from './ProjectModal';
 import UniRecognition from '../assets/images/UniRecognition.jpg';
 import MotionLab from '../assets/images/Motionlab.jpg';
+import PandoraAI from '../assets/images/Pandora.jpg';
 
 const Projects = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -17,12 +18,18 @@ const Projects = () => {
       id: 1,
       category: 'Desenvolvimento Web',
       title: 'Uni Recognition',
-      description: 'Plataforma de reconhecimento facial para identificar e registrar presença de alunos em tempo real.',
-      tags: ['Flask', 'Python', 'PostgreSQL'],
+      description: 'Plataforma de reconhecimento facial em Python para identificar e registrar presença de alunos em tempo real.',
+      tags: ['Flask', 'Python', 'PostgreSQL', 'OpenCV', 'NumPy'],
       image: UniRecognition,
-      liveUrl: 'https://unirecognition.herokuapp.com/',
-      githubUrl: 'https://github.com/example/unirecognition',
-      fullDescription: 'O Uni Recognition é uma plataforma de reconhecimento facial que utiliza a tecnologia de reconhecimento de rostos para identificar e reconhecer pessoas em tempo real. A plataforma permite que os usuários cadastrem suas faces e, em seguida, possam reconhecer pessoas em tempo real por meio de uma câmera registrando presença na aula.',
+      liveUrl: null,
+      githubUrl: 'https://github.com/UniRecognition/UniRecognition',
+      fullDescription: `UniRecognition é uma plataforma inteligente de reconhecimento facial desenvolvida para facilitar o controle de presença em ambientes educacionais. Utilizando tecnologia avançada de identificação facial em tempo real, a plataforma permite que instituições de ensino otimizem o processo de registro de presença de alunos de forma automatizada, segura e eficiente.
+
+      A solução funciona da seguinte maneira: os usuários (alunos) realizam um cadastro inicial no sistema, onde suas imagens faciais são registradas e armazenadas de forma segura. A partir disso, por meio de uma câmera posicionada no ambiente (como uma sala de aula ou laboratório), o sistema realiza a leitura facial dos presentes, reconhecendo-os instantaneamente e registrando automaticamente sua presença na aula.
+
+      Além de reduzir a burocracia e o tempo gasto com listas de chamada manuais, o UniRecognition também garante mais precisão nos registros, evita fraudes e contribui para um ambiente mais tecnológico e moderno, garantindo ganho de tempo e eficiência para os docentes e instituições de ensino.
+
+      Seja para uso em universidades, escolas técnicas ou centros de treinamento, o UniRecognition representa um grande passo rumo à transformação digital na educação.`,
       highlights: [
         'Reconhecimento facial em tempo real',
         'Registro de presença de alunos',
@@ -38,33 +45,53 @@ const Projects = () => {
       description: 'Plataforma de análise de marcha com sistemas embarcados e visão computacional',
       tags: ['React', 'Node.js', 'Python', 'PostgreSQL', 'Docker', 'AWS'],
       image: MotionLab,
-      liveUrl: 'https://example.com/dashboard',
-      githubUrl: 'https://github.com/example/dashboard',
-      fullDescription: 'Dashboard analítico interativo que processa e visualiza grandes volumes de dados em tempo real. Utilizei Vue.js para criar uma interface responsiva e dinâmica, D3.js para visualizações de dados complexas, Socket.io para atualizações em tempo real, e PostgreSQL para armazenamento eficiente de dados.',
+      liveUrl: 'https://motionlab.gaek.com.br',
+      githubUrl: 'https://github.com/MotionLab-Research',
+      fullDescription: `MotionLab é uma plataforma de análise biomecânica da marcha desenvolvida para avaliar e monitorar o padrão de locomoção de indivíduos em reabilitação, especialmente aqueles que passaram por um acidente vascular cerebral (AVC). Através da integração entre sistemas embarcados, como sensores inerciais (MPU9250), e visão computacional, o MotionLab possibilita uma coleta precisa de dados sobre a marcha em diferentes tipos de superfícies, replicando cenários do dia a dia do paciente.
+
+      A plataforma é capaz de capturar, processar e analisar variáveis biomecânicas em tempo real, fornecendo métricas detalhadas sobre o movimento corporal. Essas informações são visualizadas em um painel interativo que permite a profissionais da saúde (fisioterapeutas e pesquisadores) acompanhar a evolução funcional do paciente e adaptar os planos terapêuticos com base em dados objetivos.
+
+      Com suporte a sensores vestíveis, algoritmos de segmentação de vídeo e processamento de sinais, o MotionLab oferece:
+      - Registro e análise da marcha em superfícies planas e irregulares
+      - Identificação de fases da marcha e eventos como apoio e oscilação
+      - Detecção de assimetrias e alterações posturais características do pós-AVC
+      - Exportação de relatórios e gráficos para acompanhamento clínico
+
+      A solução foi desenvolvida com foco em acessibilidade e escalabilidade, podendo ser implementada em clínicas, centros de reabilitação ou instituições de pesquisa.`,
       highlights: [
-        'Visualizações de dados interativas e personalizáveis',
-        'Atualizações em tempo real com WebSockets',
-        'Sistema de exportação de relatórios em múltiplos formatos',
-        'Arquitetura escalável com Docker e microserviços',
-        'Implementação de filtros avançados e análise preditiva'
+        'Análise biomecânica da marcha em diferentes superfícies',
+        'Reconhecimento de padrões de movimento com visão computacional',
+        'Coleta de dados com sensores inerciais (sistemas embarcados)',
+        'Interface de dashboard com gráficos e relatórios',
+        'Foco em pacientes em reabilitação pós-AVC'
       ]
     },
     {
       id: 3,
       category: 'Mobile App',
-      title: 'App de Finanças',
-      description: 'Aplicativo para controle financeiro pessoal com categorização de gastos e visualização de tendências.',
-      tags: ['React Native', 'Firebase', 'Redux', 'Chart.js', 'Expo', 'Cloud Functions'],
-      image: 'https://via.placeholder.com/600x340/252540/06b6d4?text=App+de+Finanças',
-      liveUrl: 'https://example.com/finances',
-      githubUrl: 'https://github.com/example/finances',
-      fullDescription: 'Aplicativo mobile para controle financeiro pessoal desenvolvido com React Native e Firebase. Implementei funcionalidades como categorização automática de transações, visualização de tendências de gastos, definição de metas financeiras, notificações de orçamento e sincronização entre dispositivos.',
+      title: 'Pandora AI',
+      description: 'A Pandora utiliza reconhecimento de voz para auxiliar no dia a dia, permitindo que os usuários recebam respostas em tempo real.',
+      tags: ['React Native', 'Python', 'GeminiAPI', 'ElevenLabs', 'Expo'],
+      image: PandoraAI,
+      liveUrl: null,
+      githubUrl: 'https://github.com/EduardoMnzs/Pandora-1.0',
+      fullDescription: `Pandora AI é uma aplicação mobile desenvolvida para proporcionar uma experiência de assistente pessoal baseada em comandos de voz. Utilizando tecnologias de reconhecimento de fala e inteligência artificial, a plataforma permite que os usuários interajam por voz e recebam respostas em tempo real de maneira fluida e contextual.
+
+      A aplicação identifica a fala do usuário, interpreta a mensagem utilizando modelos de linguagem como a GeminiAPI, e retorna respostas personalizadas por meio de síntese de voz (Text-to-Speech) com o apoio da ElevenLabs. Essa abordagem torna a Pandora especialmente útil em momentos em que a digitação não é prática — como ao dirigir, praticar atividades físicas ou realizar tarefas domésticas.
+
+      Projetada com uma interface amigável, a aplicação oferece:
+      - Reconhecimento preciso da fala mesmo em ambientes ruidosos
+      - Integração com APIs modernas para entendimento e geração de linguagem natural
+      - Feedback por voz com timbre natural e agradável
+      - Possibilidade de personalização das interações e expansão para novos comandos
+
+      Pandora AI representa uma solução prática, acessível e inteligente para quem busca um assistente de voz leve e eficiente no celular.`,
       highlights: [
-        'Sincronização em tempo real entre dispositivos',
-        'Categorização inteligente de transações',
-        'Gráficos interativos para análise de gastos',
-        'Sistema de metas financeiras com notificações',
-        'Exportação de relatórios financeiros detalhados'
+        'Reconhecimento de voz para auxiliar no dia a dia',
+        'Respostas em tempo real com uso de inteligência artificial',
+        'Integração com GeminiAPI e ElevenLabs',
+        'Interface mobile amigável e responsiva',
+        'Assistente pessoal leve, intuitivo e personalizável'
       ]
     }
   ];

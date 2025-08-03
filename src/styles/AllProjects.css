@@ -335,7 +335,8 @@
 }
 
 .badge-category {
-    background-color: var(--accent-secondary);
+    background-color: #8b5cf647;
+    border: 1px solid #8b5cf6;
     color: var(--text-primary-dark);
     padding: 0.25rem 0.75rem;
     border-radius: var(--border-radius-full);

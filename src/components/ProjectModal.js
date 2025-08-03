@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import '../styles/ProjectModal.css';
 
 const ProjectModal = ({ project, onClose }) => {
-  const { technologies = [], highlights = [] } = project || {};
+  const { githubUrl, tags = [], highlights = [] } = project || {};
   const modalRef = useRef(null);
   const contentRef = useRef(null);
 
@@ -65,42 +65,34 @@ const ProjectModal = ({ project, onClose }) => {
 
         <div className="project-modal-body">
           <h2 className="project-modal-title">{project.title}</h2>
-          
+
           <div className="project-modal-tags">
-            {technologies.map((tag, i) => (
+            {tags.map((tag, i) => (
               <span key={i} className="project-modal-tag">{tag}</span>
             ))}
           </div>
-          
+
           <div className="project-modal-description">
             <h3>Descrição</h3>
-            <p>{project.fullDescription || project.description}</p>
-          </div>
-          
-          <div className="project-modal-details">
-            <h3>Tecnologias Utilizadas</h3>
-            <ul className="project-modal-tech-list">
-              {technologies.map((tech, i) => (
-                <li key={i} className="project-modal-tech-item">
-                  <span className="project-modal-tech-icon">•</span>
-                  <span>{tech}</span>
-                </li>
+            <p className="project-modal-description-text">
+              {(project.fullDescription || project.description).split('\n').map((line, index) => (
+                <React.Fragment key={index}>
+                  {line.trim()}
+                  <br />
+                </React.Fragment>
               ))}
-            </ul>
-            <p className="project-modal-tech-description">
-              Cada tecnologia foi escolhida estrategicamente para garantir a melhor performance, escalabilidade e experiência do usuário para este projeto específico.
             </p>
           </div>
-          
+
           <div className="project-modal-summary">
             <h3>Resumo</h3>
             <p>
-              Este projeto foi desenvolvido com foco em {technologies.join(', ')}. 
-              Ele demonstra minhas habilidades em desenvolvimento de interfaces, 
+              Este projeto foi desenvolvido utilizando diversas tecnologias.
+              Ele demonstra minhas habilidades em desenvolvimento de interfaces,
               integração com APIs e implementação de funcionalidades complexas.
             </p>
           </div>
-          
+
           <div className="project-modal-highlights">
             <h3>Destaques</h3>
             <ul>
@@ -112,13 +104,11 @@ const ProjectModal = ({ project, onClose }) => {
         </div>
 
         <div className="project-modal-footer">
-          <a href={project.link} className="button button-primary project-modal-button" target="_blank" rel="noopener noreferrer">
-            Ver Detalhes
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-              <polyline points="15 3 21 3 21 9"></polyline>
-              <line x1="10" y1="14" x2="21" y2="3"></line>
+          <a href={githubUrl} target="_blank" rel="noopener noreferrer" className="footer-social-link">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 3c0 0-1.03-.31-3.4 1.35A19.77 19.77 0 0 0 12 5.31c-2.76 0-5.24-.7-7-2.34C3.09 3 2 3.31 2 3.31A5.07 5.07 0 0 0 2.09 4.77A5.44 5.44 0 0 0 4 9.14c0 5.44 3.3 6.61 6.44 7A3.37 3.37 0 0 0 11 18.13V22"></path>
             </svg>
+            GitHub
           </a>
           <div className="project-modal-links">
             {project.githubLink && (

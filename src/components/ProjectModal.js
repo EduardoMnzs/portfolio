@@ -88,8 +88,7 @@ const ProjectModal = ({ project, onClose }) => {
               ))}
             </ul>
             <p className="project-modal-tech-description">
-              Cada tecnologia foi escolhida estrategicamente para garantir a melhor performance, 
-              escalabilidade e experiência do usuário para este projeto específico.
+              Cada tecnologia foi escolhida estrategicamente para garantir a melhor performance, escalabilidade e experiência do usuário para este projeto específico.
             </p>
           </div>
           

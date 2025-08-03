@@ -3,30 +3,31 @@ import { Link } from 'react-router-dom';
 import { ExternalLink, Github } from 'lucide-react';
 import '../styles/Projects.css';
 import ProjectModal from './ProjectModal';
+import UniRecognition from '../assets/images/UniRecognition.jpg';
 
 const Projects = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [selectedProject, setSelectedProject] = useState(null);
   const sectionRef = useRef(null);
-  
+
   // Projetos com mais detalhes
   const projects = [
     {
       id: 1,
-      category: 'Web Development',
-      title: 'E-commerce App',
-      description: 'Plataforma de comércio eletrônico completa com pagamentos, carrinho de compras e painel de administração.',
-      tags: ['React', 'Node.js', 'MongoDB', 'Stripe', 'Redux', 'AWS'],
-      image: 'https://via.placeholder.com/600x340/252540/3b82f6?text=E-commerce+App',
-      liveUrl: 'https://example.com/ecommerce',
-      githubUrl: 'https://github.com/example/ecommerce',
-      fullDescription: 'Uma plataforma de e-commerce completa desenvolvida com arquitetura moderna e escalável. Implementei um sistema de pagamentos seguro com Stripe, carrinho de compras persistente, autenticação de usuários, painel de administração para gerenciamento de produtos e pedidos, e integração com serviços de entrega.',
+      category: 'Desenvolvimento Web',
+      title: 'Uni Recognition',
+      description: 'Plataforma de reconhecimento facial para identificar e registrar presença de alunos em tempo real.',
+      tags: ['Flask', 'Python', 'PostgreSQL'],
+      image: UniRecognition,
+      liveUrl: 'https://unirecognition.herokuapp.com/',
+      githubUrl: 'https://github.com/example/unirecognition',
+      fullDescription: 'O Uni Recognition é uma plataforma de reconhecimento facial que utiliza a tecnologia de reconhecimento de rostos para identificar e reconhecer pessoas em tempo real. A plataforma permite que os usuários cadastrem suas faces e, em seguida, possam reconhecer pessoas em tempo real por meio de uma câmera registrando presença na aula.',
       highlights: [
-        'Sistema de pagamento seguro com Stripe',
-        'Painel administrativo com análise de vendas',
-        'Otimização de performance com lazy loading e code splitting',
-        'Implementação de PWA para experiência mobile aprimorada',
-        'Integração com serviços de entrega e rastreamento'
+        'Reconhecimento facial em tempo real',
+        'Registro de presença de alunos',
+        'Integração com sistema de turmas',
+        'Interface amigável para cadastro e gerenciamento de turmas',
+        'Sistema de autenticação de usuários'
       ]
     },
     {
@@ -99,11 +100,11 @@ const Projects = () => {
             {'Projetos'.split('').map((char, index) => <span key={index} style={{ animationDelay: `${0.1 + index * 0.08}s` }}>{char}</span>)}
           </span>
         </h2>
-        
+
         <div className="projects-grid">
           {projects.map((project, index) => (
-            <div 
-              key={project.id} 
+            <div
+              key={project.id}
               className={`project-card ${isVisible ? 'animate-in' : ''}`}
               style={{ animationDelay: `${0.2 + index * 0.15}s` }}
               onMouseMove={(e) => {
@@ -126,18 +127,18 @@ const Projects = () => {
                 </div>
                 <div className="project-overlay"></div>
               </div>
-              
+
               <div className="project-content">
                 <h3 className="project-title">{project.title}</h3>
                 <p className="project-description">{project.description}</p>
-                
+
                 <div className="project-tags">
                   {project.tags.map((tag, i) => (
                     <span key={i} className="project-tag">{tag}</span>
                   ))}
                 </div>
-                
-                <button 
+
+                <button
                   className="button button-secondary project-button"
                   onClick={() => setSelectedProject(project)}
                 >
@@ -153,11 +154,11 @@ const Projects = () => {
           </Link>
         </div>
       </div>
-      
+
       {selectedProject && (
-        <ProjectModal 
-          project={selectedProject} 
-          onClose={() => setSelectedProject(null)} 
+        <ProjectModal
+          project={selectedProject}
+          onClose={() => setSelectedProject(null)}
         />
       )}
     </section>

@@ -20,7 +20,7 @@
 }
 
 .project-modal-content {
-  background-color: var(--background-card-dark);
+  background-color: var(--background-card);
   border-radius: var(--border-radius-lg);
   width: 100%;
   max-width: 900px;
@@ -51,7 +51,7 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  color: var(--text-primary-dark);
+  color: var(--text-primary);
   z-index: 10;
   transition: background-color var(--transition-fast);
   padding: var(--spacing-xs);
@@ -75,7 +75,7 @@
 .project-modal-title {
   font-size: var(--text-2xl);
   margin-bottom: var(--spacing-md);
-  color: var(--text-primary-dark);
+  color: var(--text-primary);
 }
 
 .project-modal-technologies {
@@ -87,7 +87,7 @@
 
 .project-modal-tag {
   background: var(--gradient-blue);
-  color: var(--text-primary-dark);
+  color: var(--text-primary);
   padding: 0.3rem 0.8rem;
   border-radius: var(--border-radius-full);
   font-size: 0.8rem;
@@ -138,7 +138,7 @@
 .project-modal-tech-description {
   margin-top: var(--spacing-md);
   font-size: 0.95rem;
-  color: var(--text-secondary-dark);
+  color: var(--text-secondary);
   font-style: italic;
 }
 

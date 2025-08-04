@@ -7,6 +7,12 @@ import MotionLab from '../assets/images/Motionlab.jpg';
 import PandoraAI from '../assets/images/Pandora.jpg';
 import LaserKiller from '../assets/images/LaserKiller.jpg';
 import LoginPageInterfocus from '../assets/images/LoginPageInterfocus.jpg';
+import CalculadoraML from '../assets/images/CalculadoraML.jpg';
+import PivetaSystem from '../assets/images/PivetaSystem.jpg';
+import BotBroadcast from '../assets/images/BotBroadcast.jpg';
+import CodeExperience from '../assets/images/CodeExperience.jpg';
+import PivetaTreinamentos from '../assets/images/PivetaTreinamentos.jpg';
+import UniLife from '../assets/images/UniLife.jpg';
 
 // --- DADOS E CONSTANTES ---
 
@@ -22,11 +28,11 @@ const projects = [
         githubUrl: 'https://github.com/UniRecognition/UniRecognition',
         fullDescription: `UniRecognition é uma plataforma inteligente de reconhecimento facial desenvolvida para facilitar o controle de presença em ambientes educacionais. Utilizando tecnologia avançada de identificação facial em tempo real, a plataforma permite que instituições de ensino otimizem o processo de registro de presença de alunos de forma automatizada, segura e eficiente.
 
-     A solução funciona da seguinte maneira: os usuários (alunos) realizam um cadastro inicial no sistema, onde suas imagens faciais são registradas e armazenadas de forma segura. A partir disso, por meio de uma câmera posicionada no ambiente (como uma sala de aula ou laboratório), o sistema realiza a leitura facial dos presentes, reconhecendo-os instantaneamente e registrando automaticamente sua presença na aula.
+        A solução funciona da seguinte maneira: os usuários (alunos) realizam um cadastro inicial no sistema, onde suas imagens faciais são registradas e armazenadas de forma segura. A partir disso, por meio de uma câmera posicionada no ambiente (como uma sala de aula ou laboratório), o sistema realiza a leitura facial dos presentes, reconhecendo-os instantaneamente e registrando automaticamente sua presença na aula.
 
-     Além de reduzir a burocracia e o tempo gasto com listas de chamada manuais, o UniRecognition também garante mais precisão nos registros, evita fraudes e contribui para um ambiente mais tecnológico e moderno, garantindo ganho de tempo e eficiência para os docentes e instituições de ensino.
+        Além de reduzir a burocracia e o tempo gasto com listas de chamada manuais, o UniRecognition também garante mais precisão nos registros, evita fraudes e contribui para um ambiente mais tecnológico e moderno, garantindo ganho de tempo e eficiência para os docentes e instituições de ensino.
 
-     Seja para uso em universidades, escolas técnicas ou centros de treinamento, o UniRecognition representa um grande passo rumo à transformação digital na educação.`,
+        Seja para uso em universidades, escolas técnicas ou centros de treinamento, o UniRecognition representa um grande passo rumo à transformação digital na educação.`,
         highlights: [
             'Reconhecimento facial em tempo real',
             'Registro de presença de alunos',
@@ -46,15 +52,15 @@ const projects = [
         githubUrl: 'https://github.com/MotionLab-Research',
         fullDescription: `MotionLab é uma plataforma de análise biomecânica da marcha desenvolvida para avaliar e monitorar o padrão de locomoção de indivíduos em reabilitação, especialmente aqueles que passaram por um acidente vascular cerebral (AVC). Através da integração entre sistemas embarcados, como sensores inerciais (MPU9250), e visão computacional, o MotionLab possibilita uma coleta precisa de dados sobre a marcha em diferentes tipos de superfícies, replicando cenários do dia a dia do paciente.
 
-     A plataforma é capaz de capturar, processar e analisar variáveis biomecânicas em tempo real, fornecendo métricas detalhadas sobre o movimento corporal. Essas informações são visualizadas em um painel interativo que permite a profissionais da saúde (fisioterapeutas e pesquisadores) acompanhar a evolução funcional do paciente e adaptar os planos terapêuticos com base em dados objetivos.
+        A plataforma é capaz de capturar, processar e analisar variáveis biomecânicas em tempo real, fornecendo métricas detalhadas sobre o movimento corporal. Essas informações são visualizadas em um painel interativo que permite a profissionais da saúde (fisioterapeutas e pesquisadores) acompanhar a evolução funcional do paciente e adaptar os planos terapêuticos com base em dados objetivos.
 
-     Com suporte a sensores vestíveis, algoritmos de segmentação de vídeo e processamento de sinais, o MotionLab oferece:
-     - Registro e análise da marcha em superfícies planas e irregulares
-     - Identificação de fases da marcha e eventos como apoio e oscilação
-     - Detecção de assimetrias e alterações posturais características do pós-AVC
-     - Exportação de relatórios e gráficos para acompanhamento clínico
+        Com suporte a sensores vestíveis, algoritmos de segmentação de vídeo e processamento de sinais, o MotionLab oferece:
+        - Registro e análise da marcha em superfícies planas e irregulares
+        - Identificação de fases da marcha e eventos como apoio e oscilação
+        - Detecção de assimetrias e alterações posturais características do pós-AVC
+        - Exportação de relatórios e gráficos para acompanhamento clínico
 
-     A solução foi desenvolvida com foco em acessibilidade e escalabilidade, podendo ser implementada em clínicas, centros de reabilitação ou instituições de pesquisa.`,
+        A solução foi desenvolvida com foco em acessibilidade e escalabilidade, podendo ser implementada em clínicas, centros de reabilitação ou instituições de pesquisa.`,
         highlights: [
             'Análise biomecânica da marcha em diferentes superfícies',
             'Reconhecimento de padrões de movimento com visão computacional',
@@ -74,15 +80,15 @@ const projects = [
         githubUrl: 'https://github.com/EduardoMnzs/Pandora-1.0',
         fullDescription: `Pandora AI é uma aplicação mobile desenvolvida para proporcionar uma experiência de assistente pessoal baseada em comandos de voz. Utilizando tecnologias de reconhecimento de fala e inteligência artificial, a plataforma permite que os usuários interajam por voz e recebam respostas em tempo real de maneira fluida e contextual.
 
-     A aplicação identifica a fala do usuário, interpreta a mensagem utilizando modelos de linguagem como a GeminiAPI, e retorna respostas personalizadas por meio de síntese de voz (Text-to-Speech) com o apoio da ElevenLabs. Essa abordagem torna a Pandora especialmente útil em momentos em que a digitação não é prática — como ao dirigir, praticar atividades físicas ou realizar tarefas domésticas.
+        A aplicação identifica a fala do usuário, interpreta a mensagem utilizando modelos de linguagem como a GeminiAPI, e retorna respostas personalizadas por meio de síntese de voz (Text-to-Speech) com o apoio da ElevenLabs. Essa abordagem torna a Pandora especialmente útil em momentos em que a digitação não é prática — como ao dirigir, praticar atividades físicas ou realizar tarefas domésticas.
 
-     Projetada com uma interface amigável, a aplicação oferece:
-     - Reconhecimento preciso da fala mesmo em ambientes ruidosos
-     - Integração com APIs modernas para entendimento e geração de linguagem natural
-     - Feedback por voz com timbre natural e agradável
-     - Possibilidade de personalização das interações e expansão para novos comandos
+        Projetada com uma interface amigável, a aplicação oferece:
+        - Reconhecimento preciso da fala mesmo em ambientes ruidosos
+        - Integração com APIs modernas para entendimento e geração de linguagem natural
+        - Feedback por voz com timbre natural e agradável
+        - Possibilidade de personalização das interações e expansão para novos comandos
 
-     Pandora AI representa uma solução prática, acessível e inteligente para quem busca um assistente de voz leve e eficiente no celular.`,
+        Pandora AI representa uma solução prática, acessível e inteligente para quem busca um assistente de voz leve e eficiente no celular.`,
         highlights: [
             'Reconhecimento de voz para auxiliar no dia a dia',
             'Respostas em tempo real com uso de inteligência artificial',
@@ -143,6 +149,172 @@ const projects = [
             'Aplicação segura e estável para ambientes corporativos',
             'Desenvolvido para uso interno na Interfocus',
             'Preparado para expansão com MFA ou auditoria'
+        ]
+    },
+    {
+        id: 6,
+        category: 'Mobile App',
+        title: 'Calculadora de Margem Mercado Livre',
+        description: 'Aplicativo mobile para calcular margens de lucro em vendas no Mercado Livre.',
+        technologies: ['React Native', 'Expo', 'JavaScript', 'UX/UI', 'Finanças'],
+        image: CalculadoraML,
+        liveUrl: null,
+        githubUrl: 'https://github.com/InvPiveta/calculadora-piveta',
+        fullDescription: `A Calculadora de Margem Mercado Livre é um aplicativo mobile desenvolvido com React Native que permite aos vendedores calcularem de forma precisa suas margens de lucro considerando as taxas e comissões cobradas pela plataforma.
+
+        O app foi criado para simplificar o processo de precificação de produtos, especialmente para pequenos e médios empreendedores que vendem no Mercado Livre e desejam manter a saúde financeira do negócio. Com uma interface intuitiva, o usuário informa o valor de venda, o custo do produto e o tipo de anúncio (Clássico ou Premium), e o app retorna automaticamente o valor líquido estimado e a margem de lucro.
+
+        A lógica de cálculo considera as regras atualizadas da plataforma, como percentuais de comissão e descontos conforme a categoria do produto e tipo de anúncio.
+
+        Além disso, o aplicativo permite:
+        - Simular diferentes cenários de precificação
+        - Visualizar o impacto das taxas nas margens
+        - Ajustar estratégias de venda com base nos resultados calculados
+
+        Com visual moderno e fácil de usar, a calculadora é uma ferramenta essencial para vendedores que desejam tomar decisões estratégicas com base em dados.`,
+
+        highlights: [
+            'Cálculo automático da margem de lucro no Mercado Livre',
+            'Interface simples e responsiva para dispositivos móveis',
+            'Simulação de diferentes tipos de anúncio (Clássico/Premium)',
+            'Auxílio na tomada de decisões financeiras',
+            'Totalmente desenvolvido em React Native com Expo'
+        ]
+    },
+    {
+        id: 7,
+        category: 'Desenvolvimento Web',
+        title: 'Piveta System',
+        description: 'Sistema completo para gestão interna de vendas com chatbot, rastreio, integração Mercado Livre e bipagem de envio.',
+        technologies: ['Python', 'Flask', 'PostgreSQL', 'Chatbot', 'Mercado Livre API', 'Automação'],
+        image: PivetaSystem,
+        liveUrl: null,
+        githubUrl: 'https://github.com/EduardoMnzs/Tracking-piveta',
+        fullDescription: `O Piveta System é um sistema completo de gerenciamento interno criado para automatizar processos logísticos e operacionais de pequenos e médios e-commerces que atuam principalmente no Mercado Livre.
+
+        A plataforma reúne diversas funcionalidades integradas em um único ambiente:
+        - Chatbot interno para comunicação e auxílio em perguntas técnicas de usinagem
+        - Rastreamento de encomendas em tempo real com integração via APIs de transporte
+        - Resposta automática a perguntas de compradores utilizando a API oficial do Mercado Livre
+        - Bipagem de caixas de envio por meio de leitura de códigos de barras/QR Code, permitindo controle rigoroso de pedidos prontos para expedição
+
+        Desenvolvido com backend em Python, Flask e banco de dados PostgreSQL, o sistema é modular, escalável e preparado para integrar novos marketplaces no futuro.
+
+        O Piveta System melhora a eficiência da operação e reduz erros manuais, trazendo controle total para quem vende em larga escala e precisa de uma central automatizada.`,
+
+        highlights: [
+            'Chatbot interno para execução de comandos e suporte',
+            'Rastreamento automatizado de encomendas',
+            'Integração com API do Mercado Livre para responder perguntas automaticamente',
+            'Bipagem de caixas com controle de expedição'
+        ]
+    },
+    {
+        id: 8,
+        category: 'Automação',
+        title: 'Bot de Broadcast Automático',
+        description: 'Ferramenta automatizada para envio agendado de mensagens em massa com textos e imagens.',
+        technologies: ['Python', 'Selenium', 'Tkinter', 'Automação', 'Agendamento'],
+        image: BotBroadcast,
+        liveUrl: null,
+        githubUrl: 'https://github.com/EduardoMnzs/BrodFast-Image-V1.0',
+        fullDescription: `O Bot de Broadcast Automático é uma ferramenta desenvolvida em Python para automatizar o envio de mensagens de texto e imagens em massa via plataformas web (como Chat Pion), utilizando agendamentos personalizados.
+
+        Combinando a automação do Selenium com uma interface gráfica intuitiva construída em Tkinter, o bot permite ao usuário:
+        - Definir mensagens personalizadas com ou sem mídia (imagens)
+        - Selecionar contatos de envio
+        - Agendar o horário exato para o disparo das mensagens
+        - Acompanhar o processo de execução diretamente na interface
+
+        A principal aplicação do bot é para comunicação em larga escala, como atualizações de campanhas, avisos empresariais ou ações promocionais. Ele simula o comportamento humano no navegador, evitando bloqueios e entregando mensagens de forma eficiente e segura.`,
+
+        highlights: [
+            'Envio automático de mensagens com texto e imagem',
+            'Agendamento personalizado por data e hora',
+            'Interface gráfica simples com Tkinter',
+            'Automação via navegador com Selenium',
+            'Ideal para comunicação em larga escala'
+        ]
+    },
+    {
+        id: 9,
+        category: 'Desenvolvimento Web',
+        title: 'Code Experience',
+        description: 'Evento educacional voltado para alunos do ensino médio, com sistema de entrega de exercícios e registro de presença geolocalizado.',
+        technologies: ['Node.js', 'React', 'PostgreSQL', 'Express', 'JWT', 'Sequelize', 'Geolocalização'],
+        image: CodeExperience,
+        liveUrl: 'https://codeexp.unimar.br/',
+        githubUrl: 'https://github.com/EduardoMnzs/CodeExperience-Backend',
+        fullDescription: `O Code Experience é um evento educacional proposto pela Universidade de Marília (UNIMAR), com foco em despertar o interesse de estudantes do ensino médio pela programação e pela área de tecnologia dando uma introdução prática em Python.
+
+        Como parte da iniciativa, foi desenvolvido um sistema completo que automatiza a entrega de listas de exercícios em Python, organizadas por dias de atividade e temas abordados. Os participantes acessam a plataforma para visualizar os desafios e submeter suas soluções.
+
+        Além disso, para garantir a presença e o controle de participação de forma segura e tecnológica, o sistema implementa um mecanismo de registro de presença baseado em:
+        - Palavra-chave diária, única e liberada durante o evento
+        - Geolocalização, que valida se o aluno está em um raio de até 1km do local do evento
+
+        Essa solução não apenas automatiza a gestão do evento, mas também integra conceitos modernos como autenticação, rastreamento via GPS, controle de turmas e gamificação do aprendizado.
+
+        O Code Experience promoveu um ambiente imersivo e prático, estimulando jovens a aprender lógica de programação de maneira dinâmica e interativa.`,
+
+        highlights: [
+            'Entrega automatizada de exercícios em Python',
+            'Registro de presença via palavra-chave e geolocalização',
+            'Autenticação e controle de participantes',
+            'Incentivo ao ensino de programação para o ensino médio',
+            'Sistema acessível e responsivo para alunos e organizadores'
+        ]
+    },
+    {
+        id: 10,
+        category: 'Desenvolvimento Web',
+        title: 'Piveta Treinamentos',
+        description: 'Portal de treinamentos com foco em usinagem e técnicas de vendas, com materiais didáticos, vídeos, scripts e jogos interativos.',
+        technologies: ['React', 'Node.js', 'MongoDB', 'Educação Corporativa', 'Gamificação'],
+        image: PivetaTreinamentos,
+        liveUrl: 'https://piveta-treinamentos.vercel.app/',
+        githubUrl: 'https://github.com/InvPiveta/Piveta-Treinamentos',
+        fullDescription: `O Piveta Treinamentos é uma plataforma educacional interna desenvolvida para capacitar colaboradores da Piveta com foco em usinagem, técnicas de vendas e atendimento ao cliente. O site reúne uma variedade de conteúdos didáticos cuidadosamente organizados para apoiar o desenvolvimento técnico e comercial da equipe.
+
+        A plataforma oferece:
+        - Vídeos explicativos sobre processos de usinagem e abordagens de vendas
+        - Scripts prontos para atendimento e negociação
+        - Jogos interativos que simulam situações reais de venda
+        - Materiais em PDF e apresentações para estudo individual ou em grupo
+
+        Com uma interface moderna, responsiva e intuitiva, o sistema também aplica princípios de gamificação para engajar os usuários e permitir que gestores acompanhem o progresso de cada colaborador por meio de trilhas de aprendizado e relatórios.
+
+        Essa iniciativa fortalece o processo de capacitação contínua dentro da empresa, tornando o aprendizado mais acessível, eficiente e alinhado com os objetivos estratégicos da Piveta.`,
+
+        highlights: [
+            'Capacitação técnica e comercial em um só lugar',
+            'Conteúdos em vídeo, texto e jogos interativos',
+            'Scripts de vendas para diferentes situações',
+            'Ambiente gamificado com trilhas de aprendizado',
+            'Painel de progresso para gestores e colaboradores'
+        ]
+    },
+    {
+        id: 11,
+        category: 'Mobile App',
+        title: 'UniLife',
+        description: 'Aplicativo de gamificação universitária que recompensa alunos da Unimar com pontos por participação em eventos, convertendo em descontos ou prêmios.',
+        technologies: ['React Native', 'Node.js', 'PostgreSQL', 'Express', 'JWT', 'Sequelize', 'Geolocalização', 'Gamificação', 'Universidade'],
+        image: UniLife,
+        liveUrl: null,
+        githubUrl: 'https://github.com/EduardoMnzs/UniLife-backend',
+        fullDescription: `O UniLife é um aplicativo mobile desenvolvido para promover o engajamento estudantil dentro da Universidade de Marília (Unimar) por meio de um sistema de pontuação por participação em eventos acadêmicos, culturais e esportivos. Cada vez que um aluno participa de um evento promovido pela instituição, ele acumula pontos que podem ser trocados por descontos em produtos, serviços ou até mesmo na mensalidade.
+
+        O sistema registra a presença do aluno por meio de palavra-chave, QR Code ou geolocalização, garantindo segurança e validação precisa da participação. Os pontos são organizados em um perfil individual e podem ser acompanhados em tempo real.
+
+        O UniLife busca incentivar a vivência universitária de forma divertida e meritocrática, aproximando os estudantes das atividades extracurriculares e reconhecendo seu envolvimento com a universidade.`,
+
+        highlights: [
+            'Pontuação por participação em eventos da Unimar',
+            'Troca de pontos por produtos, serviços ou descontos',
+            'Presença validada por QR Code, palavra-chave ou geolocalização',
+            'Perfil do aluno com histórico de eventos e pontuação',
+            'Sistema de gamificação para aumentar o engajamento estudantil'
         ]
     }
 ];

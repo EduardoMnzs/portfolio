@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import '../styles/ProjectModal.css';
 
 const ProjectModal = ({ project, onClose }) => {
-  const { githubUrl, tags = [], highlights = [] } = project || {};
+  const { githubUrl, technologies = [], highlights = [] } = project || {};
   const modalRef = useRef(null);
   const contentRef = useRef(null);
 
@@ -66,8 +66,8 @@ const ProjectModal = ({ project, onClose }) => {
         <div className="project-modal-body">
           <h2 className="project-modal-title">{project.title}</h2>
 
-          <div className="project-modal-tags">
-            {tags.map((tag, i) => (
+          <div className="project-modal-technologies">
+            {technologies.map((tag, i) => (
               <span key={i} className="project-modal-tag">{tag}</span>
             ))}
           </div>
